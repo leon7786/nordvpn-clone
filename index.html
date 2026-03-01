@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NordVPN – Go online with peace of mind</title>
+  <meta name="description" content="NordVPN-inspired landing page clone with dark modern UI, pricing cards, FAQ, and smooth animations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e27;
+      --bg-2: #111538;
+      --card: #161a3a;
+      --blue: #4687ff;
+      --green: #3ecc80;
+      --green-2: #44d4a0;
+      --purple: #7b68ee;
+      --text: #ffffff;
+      --text-2: #a0a8c8;
+      --text-3: #6b7199;
+      --danger: #ff6b6b;
+      --border: rgba(255,255,255,0.06);
+      --divider: rgba(255,255,255,0.08);
+      --shadow: 0 10px 35px rgba(0,0,0,0.35);
+      --radius: 16px;
+      --container: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 500px at 90% -10%, rgba(70,135,255,0.25), transparent 55%),
+        radial-gradient(800px 400px at 5% 10%, rgba(123,104,238,0.2), transparent 55%),
+        var(--bg);
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--container));
+      margin-inline: auto;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    /* Navbar */
+    .nav-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .nav-wrap.scrolled {
+      background: rgba(10, 14, 39, 0.84);
+      backdrop-filter: blur(12px);
+      border-color: var(--divider);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    }
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      font-size: 1.35rem;
+      letter-spacing: .2px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .logo .vpn { color: var(--blue); font-weight: 700; }
+    .logo-mark {
+      width: 22px;
+      height: 22px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--purple), var(--blue));
+      box-shadow: 0 0 16px rgba(70,135,255,.5);
+      position: relative;
+    }
+    .logo-mark::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      bottom: 4px;
+      height: 10px;
+      border-radius: 10px 10px 6px 6px;
+      background: rgba(255,255,255,.9);
+      clip-path: polygon(0 100%, 30% 20%, 50% 55%, 74% 10%, 100% 100%);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--text);
+      font-size: .95rem;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-links a { opacity: .9; transition: opacity .2s ease, color .2s ease; }
+    .nav-links a:hover { opacity: 1; color: #dce7ff; }
+
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 11px 18px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform .2s ease, filter .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn-ghost {
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.04); }
+    .btn-primary {
+      background: linear-gradient(120deg, var(--green), var(--green-2));
+      color: #081026;
+      box-shadow: 0 8px 24px rgba(62,204,128,.33);
+    }
+    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+    /* Generic sections */
+    main { padding-top: 88px; }
+    section { padding: 70px 0; position: relative; }
+    .section-head {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-head p {
+      color: var(--text-2);
+      margin: 14px auto 0;
+      max-width: 760px;
+      font-size: 1.02rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 48px;
+      padding-bottom: 56px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 34px;
+      min-height: 560px;
+    }
+
+    .deal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background:
+        linear-gradient(var(--bg), var(--bg)) padding-box,
+        linear-gradient(120deg, var(--purple), var(--blue), #50a1ff) border-box;
+      color: #dbe7ff;
+      font-size: .88rem;
+      margin-bottom: 18px;
+      animation: fadeUp .75s ease both;
+    }
+    .deal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--danger);
+      box-shadow: 0 0 8px rgba(255,107,107,.8);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5.2vw, 4.25rem);
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+      max-width: 680px;
+      animation: fadeUp .8s .08s ease both;
+    }
+    .hero-sub {
+      margin: 18px 0 0;
+      color: var(--text-2);
+      max-width: 630px;
+      font-size: clamp(1rem, 2vw, 1.12rem);
+      animation: fadeUp .8s .18s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 30px;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeUp .8s .28s ease both;
+    }
+    .hero-cta .btn { padding: 15px 28px; font-size: 1rem; border-radius: 28px; }
+    .moneyback {
+      color: var(--text-2);
+      font-size: .93rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .moneyback svg { color: var(--green); }
+
+    .trust-row {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeUp .8s .38s ease both;
+    }
+    .trust-pill {
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .82rem;
+      color: #c5cee8;
+      white-space: nowrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 480px;
+    }
+    .hero-glow {
+      position: absolute;
+      width: min(460px, 100%);
+      aspect-ratio: 1;
+      background: radial-gradient(circle at 50% 50%, rgba(70,135,255,.38), rgba(123,104,238,.14) 40%, transparent 70%);
+      filter: blur(8px);
+      animation: pulse-glow 3.8s ease-in-out infinite;
+    }
+    .shield-wrap {
+      width: min(360px, 85%);
+      aspect-ratio: 1;
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(70,135,255,.12), rgba(123,104,238,.08));
+      border: 1px solid rgba(147,176,255,.26);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.04) inset, 0 22px 45px rgba(0,0,0,.38);
+      display: grid;
+      place-items: center;
+      transform: perspective(1000px) rotateY(-12deg) rotateX(6deg);
+      animation: pulse-glow 3.8s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    .shield-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -35%;
+      background: conic-gradient(from 120deg, transparent, rgba(123,104,238,.33), transparent, rgba(70,135,255,.3), transparent);
+      animation: spin 7s linear infinite;
+    }
+    .shield {
+      width: 58%;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 8px 20px rgba(70,135,255,.4));
+    }
+
+    @keyframes pulse-glow {
+      0%,100% { transform: translateY(0) scale(1); filter: saturate(1); }
+      50% { transform: translateY(-6px) scale(1.03); filter: saturate(1.12); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Promo */
+    .promo {
+      padding-top: 14px;
+    }
+    .promo-card {
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      padding: 24px 26px;
+      background:
+        linear-gradient(135deg, rgba(70,135,255,.16), rgba(123,104,238,.12) 35%, rgba(17,21,56,1) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--shadow);
+    }
+    .promo-title {
+      margin: 0;
+      font-size: clamp(1.28rem, 2.4vw, 2rem);
+      letter-spacing: -0.02em;
+    }
+    .promo-price {
+      margin-top: 6px;
+      color: var(--text-2);
+    }
+    .promo-price s {
+      opacity: .8;
+      margin-right: 8px;
+    }
+    .promo-price strong {
+      color: var(--text);
+      font-size: 1.24rem;
+    }
+
+    /* Feature cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      min-height: 220px;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(70,135,255,.5);
+      box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 0 0 1px rgba(70,135,255,.2) inset;
+    }
+    .icon-bubble {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(123,104,238,.34), rgba(70,135,255,.22));
+      border: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      margin: 0;
+      font-size: 1.06rem;
+    }
+    .feature-card p {
+      margin: 10px 0 0;
+      color: var(--text-2);
+      font-size: .95rem;
+    }
+
+    /* Servers */
+    .servers {
+      background: linear-gradient(180deg, rgba(17,21,56,.45), rgba(17,21,56,.2));
+      border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
+    }
+    .map-panel {
+      margin-top: 24px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 35%, rgba(70,135,255,.2), transparent 36%),
+        radial-gradient(circle at 80% 62%, rgba(123,104,238,.18), transparent 34%),
+        radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px) 0 0/18px 18px,
+        #0c1230;
+    }
+    .map-line {
+      position: absolute;
+      border: 1px dashed rgba(134,161,255,.4);
+      border-radius: 999px;
+      opacity: .6;
+    }
+    .node {
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #8ab2ff;
+      box-shadow: 0 0 0 6px rgba(70,135,255,.13), 0 0 18px rgba(70,135,255,.9);
+      animation: ping 2.6s ease infinite;
+    }
+    @keyframes ping {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: .75; }
+    }
+    .stats {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .stat {
+      text-align: center;
+      background: rgba(22,26,58,.85);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .stat .num {
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: #e7efff;
+    }
+    .stat p {
+      margin: 6px 0 0;
+      color: var(--text-2);
+      font-size: .92rem;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .price-card.popular {
+      border: 1px solid transparent;
+      background:
+        linear-gradient(var(--card), var(--card)) padding-box,
+        linear-gradient(130deg, var(--purple), var(--blue)) border-box;
+      animation: cardPulse 3s ease-in-out infinite;
+    }
+    @keyframes cardPulse {
+      0%, 100% { box-shadow: 0 0 0 rgba(70,135,255,0); }
+      50% { box-shadow: 0 0 24px rgba(70,135,255,.22); }
+    }
+    .tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(120deg, var(--purple), var(--blue));
+      border-radius: 999px;
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      letter-spacing: .02em;
+    }
+    .price-card h3 { margin: 0; font-size: 1.2rem; }
+    .price-main {
+      margin-top: 8px;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .muted { color: var(--text-2); font-size: .95rem; }
+    .alt-prices {
+      margin: 14px 0;
+      color: #c9d5f6;
+      font-size: .92rem;
+      line-height: 1.9;
+    }
+    .feature-list {
+      margin: 8px 0 22px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--text-2);
+      font-size: .93rem;
+      flex: 1;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .feature-list svg { color: var(--green); flex: 0 0 auto; }
+    .card-footer {
+      margin-top: 14px;
+      color: var(--text-3);
+      font-size: .83rem;
+      text-align: center;
+    }
+
+    /* Reviews */
+    .reviews {
+      background: linear-gradient(180deg, rgba(17,21,56,.28), transparent);
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .review {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .review h4 { margin: 0; font-size: 1rem; }
+    .stars { color: #ffd166; letter-spacing: 2px; margin-top: 8px; }
+    .review p { margin: 6px 0 0; color: var(--text-2); }
+    .media-logos {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .media-logos span {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #cbd6f4;
+      font-size: .87rem;
+      background: rgba(255,255,255,.015);
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--card);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      color: var(--text);
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .faq-q span:last-child { transition: transform .25s ease; }
+    .faq-item.active .faq-q span:last-child { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+    .faq-a-inner {
+      padding: 0 18px 16px;
+      color: var(--text-2);
+      font-size: .95rem;
+    }
+
+    /* Bottom CTA */
+    .bottom-cta {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+    .bottom-cta .panel {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      text-align: center;
+      padding: 48px 20px;
+      background: linear-gradient(140deg, rgba(123,104,238,.2), rgba(70,135,255,.2), rgba(17,21,56,.9));
+      box-shadow: var(--shadow);
+    }
+    .bottom-cta h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      letter-spacing: -0.02em;
+    }
+    .bottom-cta p {
+      color: var(--text-2);
+      margin: 12px 0 20px;
+    }
+
+    /* Footer */
+    footer {
+      background: #080b1f;
+      border-top: 1px solid var(--divider);
+      margin-top: 24px;
+      padding: 48px 0 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .footer-col h4 {
+      margin: 0 0 12px;
+      font-size: .98rem;
+    }
+    .footer-col a {
+      display: block;
+      color: var(--text-2);
+      font-size: .92rem;
+      margin: 8px 0;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      margin-top: 26px;
+      border-top: 1px solid var(--divider);
+      padding-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-3);
+      font-size: .88rem;
+    }
+    .socials {
+      display: flex;
+      gap: 10px;
+    }
+    .socials a {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #cbd6f4;
+      background: #0d1230;
+    }
+
+    /* Responsive */
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.02);
+      color: #fff;
+    }
+
+    @media (max-width: 1080px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .review-grid { grid-template-columns: 1fr; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        min-height: initial;
+      }
+      .hero-visual { min-height: 360px; }
+      .shield-wrap {
+        transform: none;
+        width: min(300px, 78vw);
+      }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        height: 70px;
+      }
+      .nav-links,
+      .nav-cta .btn-ghost { display: none; }
+      .nav-toggle { display: inline-grid; place-items: center; }
+      .promo-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .stats { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, var(--container)); }
+      section { padding: 54px 0; }
+      .features-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: clamp(2rem, 12vw, 3rem); }
+      .hero-cta .btn { width: 100%; }
+      .trust-row { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-wrap" id="navWrap">
+    <nav class="nav container">
+      <a href="#" class="logo" aria-label="NordVPN">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>Nord</span><span class="vpn">VPN</span>
+      </a>
+
+      <div class="nav-links" aria-label="Main navigation">
+        <a href="#features">What is a VPN?</a>
+        <a href="#features">VPN Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#servers">Servers</a>
+        <a href="#reviews">What's New</a>
+      </div>
+
+      <div class="nav-cta">
+        <button class="btn btn-ghost">Log In</button>
+        <button class="btn btn-primary">Get NordVPN</button>
+        <button class="nav-toggle" aria-label="Open navigation">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="deal-badge"><span class="deal-dot"></span> Spring deal – save up to 77%</div>
+          <h1>Go online with peace of mind</h1>
+          <p class="hero-sub">Get the VPN that's trusted by millions for secure browsing, Wi-Fi protection, and access to content worldwide.</p>
+
+          <div class="hero-cta">
+            <button class="btn btn-primary">Get the deal</button>
+            <div class="moneyback">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+              30-day money-back guarantee
+            </div>
+          </div>
+
+          <div class="trust-row" aria-label="Trust badges">
+            <span class="trust-pill">TechRadar ★ 4.8</span>
+            <span class="trust-pill">PCMag Editor's Choice</span>
+            <span class="trust-pill">CNET ★ 4.7</span>
+            <span class="trust-pill">Trustpilot ★ 4.5</span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-glow"></div>
+          <div class="shield-wrap">
+            <svg class="shield" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Security shield">
+              <defs>
+                <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#7b68ee"/>
+                  <stop offset="100%" stop-color="#4687ff"/>
+                </linearGradient>
+              </defs>
+              <path d="M128 22l82 28v62c0 57-34 100-82 122-48-22-82-65-82-122V50l82-28z" fill="url(#shieldGrad)" opacity="0.98"/>
+              <path d="M128 45l59 20v44c0 44-23 77-59 97-36-20-59-53-59-97V65l59-20z" fill="rgba(8,12,34,.32)"/>
+              <path d="M94 126l22 22 46-46" fill="none" stroke="#dff7eb" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="promo reveal">
+      <div class="container">
+        <div class="promo-card">
+          <div>
+            <h2 class="promo-title">Save 77% on a 2-year plan</h2>
+            <div class="promo-price"><s>$12.99/mo</s><strong>$2.99/mo</strong></div>
+          </div>
+          <button class="btn btn-primary">Get NordVPN</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Online security starts with a click</h2>
+          <p>Everything you need to stay private, secure, and fast online — whether you're browsing at home or on public Wi-Fi.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <div class="icon-bubble">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dfe7ff" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 118 0v3"/></svg>
+            </div>
+            <h3>Secure encryption</h3>
+            <p>Protect your data with next-gen encryption.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="icon-bubble">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dfe7ff" stroke-width="2"><path d="M12 3l7 3v6c0 4.7-2.8 7.8-7 9-4.2-1.2-7-4.3-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>Threat Protection</h3>
+            <p>Block ads, trackers, and malware.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="icon-bubble">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dfe7ff" stroke-width="2"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg>
+            </div>
+            <h3>No-logs policy</h3>
+            <p>Audited no-logs policy ensures your privacy.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="icon-bubble">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dfe7ff" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+            </div>
+            <h3>Lightning speed</h3>
+            <p>Browse, stream, and download without slowdowns.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="servers" class="servers">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>A massive network of high-speed servers</h2>
+          <p>Securely access content and browse at full speed with our global infrastructure.</p>
+        </div>
+
+        <div class="map-panel reveal">
+          <span class="map-line" style="left:8%;top:35%;width:34%;height:22%;"></span>
+          <span class="map-line" style="left:34%;top:38%;width:28%;height:26%;"></span>
+          <span class="map-line" style="left:58%;top:28%;width:30%;height:30%;"></span>
+
+          <span class="node" style="left:18%;top:46%"></span>
+          <span class="node" style="left:40%;top:43%"></span>
+          <span class="node" style="left:58%;top:52%"></span>
+          <span class="node" style="left:74%;top:38%"></span>
+          <span class="node" style="left:86%;top:56%"></span>
+        </div>
+
+        <div class="stats reveal" id="stats">
+          <div class="stat">
+            <div class="num" data-target="7000">0</div>
+            <p>servers</p>
+          </div>
+          <div class="stat">
+            <div class="num" data-target="118">0</div>
+            <p>countries</p>
+          </div>
+          <div class="stat">
+            <div class="num" data-text="Unlimited">Unlimited</div>
+            <p>bandwidth</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Choose the plan that works for you</h2>
+          <p>Pick a plan with powerful features, premium speed, and full privacy control.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <h3>Basic</h3>
+            <div class="price-main">$3.39/mo</div>
+            <div class="muted">2-year plan</div>
+            <div class="alt-prices">
+              1-year: <strong>$5.99/mo</strong><br/>
+              Monthly: <strong>$12.99/mo</strong>
+            </div>
+            <ul class="feature-list">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Secure VPN connection</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>High-speed servers</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Private DNS</li>
+            </ul>
+            <button class="btn btn-primary">Get Basic</button>
+            <div class="card-footer">30-day money-back guarantee</div>
+          </article>
+
+          <article class="price-card popular reveal">
+            <span class="tag">Most popular</span>
+            <h3>Plus</h3>
+            <div class="price-main">$4.39/mo</div>
+            <div class="muted">2-year plan</div>
+            <div class="alt-prices">
+              Includes all Basic features + extras
+            </div>
+            <ul class="feature-list">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>VPN + Threat Protection</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Password Manager</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Advanced browsing protection</li>
+            </ul>
+            <button class="btn btn-primary">Get Plus</button>
+            <div class="card-footer">30-day money-back guarantee</div>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Complete</h3>
+            <div class="price-main">$5.39/mo</div>
+            <div class="muted">2-year plan</div>
+            <div class="alt-prices">Everything in Plus and more</div>
+            <ul class="feature-list">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>All privacy & security features</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>1TB encrypted cloud storage</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Cross-device protection</li>
+            </ul>
+            <button class="btn btn-primary">Get Complete</button>
+            <div class="card-footer">30-day money-back guarantee</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Trusted by millions</h2>
+          <p>Users and top publications consistently rank NordVPN among the most reliable VPN services.</p>
+        </div>
+
+        <div class="review-grid">
+          <article class="review reveal">
+            <h4>Trustpilot</h4>
+            <div class="stars">★★★★★</div>
+            <p>4.5 / 5 rating from verified users</p>
+          </article>
+          <article class="review reveal">
+            <h4>Google Play</h4>
+            <div class="stars">★★★★☆</div>
+            <p>4.3 / 5 app rating</p>
+          </article>
+          <article class="review reveal">
+            <h4>App Store</h4>
+            <div class="stars">★★★★★</div>
+            <p>4.7 / 5 from iOS users</p>
+          </article>
+        </div>
+
+        <div class="media-logos reveal" aria-label="Media logos">
+          <span>TechRadar</span>
+          <span>PCMag</span>
+          <span>The Verge</span>
+          <span>CNET</span>
+          <span>Tom's Guide</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <article class="faq-item reveal active">
+            <button class="faq-q"><span>What is a VPN?</span><span>⌄</span></button>
+            <div class="faq-a" style="max-height: 160px;">
+              <div class="faq-a-inner">A VPN (Virtual Private Network) encrypts your internet traffic and routes it through secure servers to protect your privacy and data online.</div>
+            </div>
+          </article>
+
+          <article class="faq-item reveal">
+            <button class="faq-q"><span>Is NordVPN safe to use?</span><span>⌄</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Yes. NordVPN uses advanced encryption, audited no-logs policies, and additional threat protection features for safer browsing.</div></div>
+          </article>
+
+          <article class="faq-item reveal">
+            <button class="faq-q"><span>How many devices can I connect?</span><span>⌄</span></button>
+            <div class="faq-a"><div class="faq-a-inner">You can protect multiple devices at once with one account, including phones, laptops, tablets, and smart TVs.</div></div>
+          </article>
+
+          <article class="faq-item reveal">
+            <button class="faq-q"><span>Does NordVPN work with Netflix?</span><span>⌄</span></button>
+            <div class="faq-a"><div class="faq-a-inner">NordVPN offers fast servers optimized for streaming, helping you securely access content while traveling.</div></div>
+          </article>
+
+          <article class="faq-item reveal">
+            <button class="faq-q"><span>Can I get a refund?</span><span>⌄</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Yes — all plans come with a 30-day money-back guarantee, so you can try it risk-free.</div></div>
+          </article>
+
+          <article class="faq-item reveal">
+            <button class="faq-q"><span>Will a VPN slow down my connection?</span><span>⌄</span></button>
+            <div class="faq-a"><div class="faq-a-inner">With NordVPN’s high-speed network, you get strong privacy with minimal speed impact for browsing, gaming, and streaming.</div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-cta reveal">
+      <div class="container">
+        <div class="panel">
+          <h2>Start your online security journey</h2>
+          <p>30-day money-back guarantee</p>
+          <button class="btn btn-primary" style="padding:14px 28px;">Get NordVPN</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Products</h4>
+          <a href="#">VPN</a>
+          <a href="#">Threat Protection</a>
+          <a href="#">Password Manager</a>
+          <a href="#">Meshnet</a>
+        </div>
+        <div class="footer-col">
+          <h4>About</h4>
+          <a href="#">About us</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Setup tutorials</a>
+          <a href="#">Contact us</a>
+          <a href="#">Status</a>
+        </div>
+        <div class="footer-col">
+          <h4>Partners</h4>
+          <a href="#">Affiliates</a>
+          <a href="#">Business VPN</a>
+          <a href="#">Resellers</a>
+          <a href="#">Developers</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="socials" aria-label="Social links">
+          <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2H21l-6.56 7.5L22 22h-6.03l-4.72-6.17L5.85 22H3.08l7-8-7.08-12h6.18l4.27 5.66L18.24 2z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 8H16V5h-2.5C10.46 5 9 6.7 9 9.7V12H7v3h2v6h3v-6h2.5l.5-3H12V9.8c0-1.1.3-1.8 1.5-1.8z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.9 2.9 0 00-2-2C19 4.8 12 4.8 12 4.8s-7 0-8.6.5a2.9 2.9 0 00-2 2C1 8.8 1 12 1 12s0 3.2.4 4.7a2.9 2.9 0 002 2c1.6.5 8.6.5 8.6.5s7 0 8.6-.5a2.9 2.9 0 002-2c.4-1.5.4-4.7.4-4.7zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+        </div>
+        <div>© 2026 NordVPN Clone. All rights reserved.</div>
+        <div>Language: English ▾</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll behavior
+    const navWrap = document.getElementById('navWrap');
+    const onScroll = () => {
+      if (window.scrollY > 8) navWrap.classList.add('scrolled');
+      else navWrap.classList.remove('scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Intersection reveal
+    const revealEls = [...document.querySelectorAll('.reveal')];
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Count up stats once visible
+    const statsWrap = document.getElementById('stats');
+    let counted = false;
+
+    const runCount = () => {
+      if (counted) return;
+      counted = true;
+      document.querySelectorAll('.num[data-target]').forEach(el => {
+        const target = Number(el.dataset.target) || 0;
+        const duration = 1500;
+        const start = performance.now();
+        const format = (v) => v.toLocaleString();
+
+        const step = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const value = Math.floor(target * eased);
+          el.textContent = p === 1 ? format(target) + '+' : format(value);
+          if (p < 1) requestAnimationFrame(step);
+        };
+
+        requestAnimationFrame(step);
+      });
+    };
+
+    const statObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        runCount();
+        statObserver.disconnect();
+      }
+    }, { threshold: 0.25 });
+
+    if (statsWrap) statObserver.observe(statsWrap);
+
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      q.addEventListener('click', () => {
+        const isOpen = item.classList.contains('active');
+
+        faqItems.forEach(other => {
+          other.classList.remove('active');
+          other.querySelector('.faq-a').style.maxHeight = '0px';
+        });
+
+        if (!isOpen) {
+          item.classList.add('active');
+          a.style.maxHeight = a.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
