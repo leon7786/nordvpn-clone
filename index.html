@@ -1184,6 +1184,484 @@
   </footer>
 
   <script>
+    // i18n: auto switch by browser language (en / zh-Hans / zh-Hant)
+    const I18N = {
+      en: {
+        nav: ["Pricing", "Features", "Servers", "FAQ", "Support"],
+        signIn: "Sign in",
+        getBrand: "Get ISIW-VPN",
+        badge: "Limited offer · save big on longer plans",
+        heroTitle: "The VPN service for a safer, open internet",
+        heroSub: "ISIW-VPN secures your connection, helps protect public Wi-Fi sessions, and keeps your browsing smooth across devices.",
+        heroCta: "Get the offer",
+        guarantee: "30-day money-back guarantee",
+        trust: ["No-activity policy", "AES-256 encryption", "24/7 support"],
+        promoTitle: "Save up to 72% on a 2-year plan",
+        featuresEyebrow: "Features",
+        featuresTitle: "Online security starts with a click",
+        featuresDesc: "Built to feel effortless: strong privacy, smart protection, and reliable speed—without complicated setup.",
+        featureCards: [
+          { h: "Secure encryption", p: "Protect your traffic with modern encryption designed for real-world threats." },
+          { h: "Threat filtering", p: "Block common trackers and risky links to reduce exposure and distraction." },
+          { h: "Stable performance", p: "Keep streaming and working smoothly with tuned routing and smart selection." }
+        ],
+        networkEyebrow: "Network",
+        networkTitle: "A massive network of high-speed servers",
+        networkDesc: "Choose fast routes worldwide with dependable uptime and consistent performance.",
+        statLabels: ["servers", "locations", "bandwidth"],
+        pricingEyebrow: "Pricing",
+        pricingTitle: "Choose the plan that works for you",
+        pricingIntro: "Pick a simple plan today. Upgrade or switch anytime.",
+        seeFaq: "See FAQ",
+        plans: [
+          {
+            name: "Basic",
+            desc: "VPN essentials for everyday privacy.",
+            cta: "Get Basic",
+            feats: ["Encrypted VPN tunnel", "Fast server selection", "10 devices included"]
+          },
+          {
+            name: "Plus",
+            desc: "Extra protection for daily browsing.",
+            cta: "Get Plus",
+            feats: ["Everything in Basic", "Threat filtering", "Password manager"]
+          },
+          {
+            name: "Complete",
+            desc: "All-in security for peace of mind.",
+            cta: "Get Complete",
+            feats: ["Everything in Plus", "1 TB encrypted storage", "Priority support"]
+          }
+        ],
+        popularTag: "Most popular",
+        trustedEyebrow: "Trusted",
+        trustedTitle: "Trusted by teams and individuals",
+        trustedDesc: "Independent ratings and reviews (illustrative) help you choose confidently.",
+        ratingLines: [
+          "average rating · 50k+ reviews",
+          "average rating · 200k+ ratings",
+          "average rating · 1M+ downloads"
+        ],
+        faqEyebrow: "FAQ",
+        faqTitle: "Frequently Asked Questions",
+        faqDesc: "Quick answers to common VPN questions.",
+        faqQ: [
+          "What is a VPN?",
+          "Is ISIW-VPN safe to use?",
+          "How many devices can I connect?",
+          "Can I get a refund?"
+        ],
+        faqA: [
+          "A VPN creates an encrypted tunnel between your device and the internet, helping protect data on public networks and reducing tracking.",
+          "ISIW-VPN is built with strong encryption and a privacy-first approach. Always keep your apps updated and use multi-factor authentication where possible.",
+          "Plans include multiple devices so you can protect phones, laptops, and tablets under one account.",
+          "Yes. We include a 30-day money-back guarantee so you can try ISIW-VPN risk-free."
+        ],
+        ctaTitle: "Start your online security journey",
+        ctaDesc: "Get protection you can turn on in minutes, with a 30-day money-back guarantee.",
+        learnMore: "Learn more",
+        footerBlurb: "Privacy-first VPN protection for everyday browsing, work, and travel.",
+        footerSupport: "Support: support@isiw-vpn.example",
+        footerCols: ["Products", "Company", "Support"],
+        footerLinks: [
+          ["VPN Plans", "Threat Filtering", "Server Network", "Business VPN"],
+          ["About", "Blog", "Careers", "Press"],
+          ["FAQ", "Help Center", "Setup Tutorials", "Contact"]
+        ],
+        copyright: "© 2026 ISIW-VPN · All rights reserved."
+      },
+      "zh-Hans": {
+        nav: ["价格", "功能", "服务器", "常见问题", "支持"],
+        signIn: "登录",
+        getBrand: "获取 ISIW-VPN",
+        badge: "限时优惠 · 长周期方案更划算",
+        heroTitle: "为更安全、更开放的互联网而生的 VPN 服务",
+        heroSub: "ISIW-VPN 加密你的连接，帮助你在公共 Wi-Fi 下安全上网，并让多设备浏览保持流畅。",
+        heroCta: "立即获取优惠",
+        guarantee: "30 天退款保证",
+        trust: ["无活动记录政策", "AES-256 加密", "7×24 小时支持"],
+        promoTitle: "两年方案最高立省 72%",
+        featuresEyebrow: "功能",
+        featuresTitle: "一键开启在线安全",
+        featuresDesc: "强调简单易用：强隐私、智能防护与稳定速度，无需复杂设置。",
+        featureCards: [
+          { h: "安全加密", p: "使用现代加密技术保护你的流量，抵御真实世界的威胁。" },
+          { h: "威胁过滤", p: "拦截常见跟踪与风险链接，减少暴露与干扰。" },
+          { h: "稳定高速", p: "通过智能选路与优化，保持流媒体与工作场景的顺畅体验。" }
+        ],
+        networkEyebrow: "网络",
+        networkTitle: "海量高速服务器网络",
+        networkDesc: "覆盖全球的稳定线路与可靠可用性，随时选择更快的连接。",
+        statLabels: ["服务器", "地点", "不限流量"],
+        pricingEyebrow: "价格",
+        pricingTitle: "选择适合你的方案",
+        pricingIntro: "先从简单方案开始，随时升级或更换。",
+        seeFaq: "查看 FAQ",
+        plans: [
+          {
+            name: "Basic",
+            desc: "日常隐私所需的基础 VPN 功能。",
+            cta: "选择 Basic",
+            feats: ["加密 VPN 隧道", "快速节点选择", "最多 10 台设备"]
+          },
+          {
+            name: "Plus",
+            desc: "为日常浏览提供更强防护。",
+            cta: "选择 Plus",
+            feats: ["包含 Basic 全部功能", "威胁过滤", "密码管理器"]
+          },
+          {
+            name: "Complete",
+            desc: "更全面的安全方案，安心无忧。",
+            cta: "选择 Complete",
+            feats: ["包含 Plus 全部功能", "1 TB 加密存储", "优先支持"]
+          }
+        ],
+        popularTag: "最受欢迎",
+        trustedEyebrow: "口碑",
+        trustedTitle: "深受个人与团队信赖",
+        trustedDesc: "来自第三方的评分与评价（示例）帮助你更放心地选择。",
+        ratingLines: [
+          "平均评分 · 5 万+ 评论",
+          "平均评分 · 20 万+ 评分",
+          "平均评分 · 100 万+ 下载"
+        ],
+        faqEyebrow: "常见问题",
+        faqTitle: "常见问题解答",
+        faqDesc: "快速了解常见 VPN 问题。",
+        faqQ: [
+          "VPN 是什么？",
+          "ISIW-VPN 安全吗？",
+          "可以同时连接多少设备？",
+          "可以退款吗？"
+        ],
+        faqA: [
+          "VPN 会在你的设备与互联网之间建立加密通道，帮助你在公共网络中保护数据并减少跟踪。",
+          "ISIW-VPN 采用强加密并坚持隐私优先。建议保持应用更新，并在可用时启用多因素认证。",
+          "套餐支持多设备使用，你可以在手机、电脑、平板等设备上同时开启保护。",
+          "可以。我们提供 30 天退款保证，让你可以无风险试用 ISIW-VPN。"
+        ],
+        ctaTitle: "开启你的在线安全之旅",
+        ctaDesc: "几分钟即可开启保护，并提供 30 天退款保证。",
+        learnMore: "了解更多",
+        footerBlurb: "隐私优先的 VPN 防护，适用于日常浏览、办公与出行。",
+        footerSupport: "支持邮箱：support@isiw-vpn.example",
+        footerCols: ["产品", "公司", "支持"],
+        footerLinks: [
+          ["VPN 套餐", "威胁过滤", "服务器网络", "企业 VPN"],
+          ["关于我们", "博客", "加入我们", "媒体"]
+          ,
+          ["常见问题", "帮助中心", "安装教程", "联系我们"]
+        ],
+        copyright: "© 2026 ISIW-VPN · 保留所有权利。"
+      },
+      "zh-Hant": {
+        nav: ["價格", "功能", "伺服器", "常見問題", "支援"],
+        signIn: "登入",
+        getBrand: "取得 ISIW-VPN",
+        badge: "限時優惠 · 長週期方案更划算",
+        heroTitle: "為更安全、更開放的網際網路而生的 VPN 服務",
+        heroSub: "ISIW-VPN 加密你的連線，協助你在公共 Wi-Fi 下安全上網，並讓多裝置瀏覽保持順暢。",
+        heroCta: "立即取得優惠",
+        guarantee: "30 天退款保證",
+        trust: ["無活動紀錄政策", "AES-256 加密", "24/7 支援"],
+        promoTitle: "兩年方案最高立省 72%",
+        featuresEyebrow: "功能",
+        featuresTitle: "一鍵開啟線上安全",
+        featuresDesc: "強調簡單易用：強隱私、智慧防護與穩定速度，無需複雜設定。",
+        featureCards: [
+          { h: "安全加密", p: "使用現代加密技術保護你的流量，抵禦真實世界的威脅。" },
+          { h: "威脅過濾", p: "阻擋常見追蹤與風險連結，降低暴露與干擾。" },
+          { h: "穩定高速", p: "透過智慧選路與最佳化，保持串流與工作情境的順暢體驗。" }
+        ],
+        networkEyebrow: "網路",
+        networkTitle: "海量高速伺服器網路",
+        networkDesc: "覆蓋全球的穩定線路與可靠可用性，隨時選擇更快的連線。",
+        statLabels: ["伺服器", "地點", "不限流量"],
+        pricingEyebrow: "價格",
+        pricingTitle: "選擇適合你的方案",
+        pricingIntro: "先從簡單方案開始，隨時升級或更換。",
+        seeFaq: "查看 FAQ",
+        plans: [
+          {
+            name: "Basic",
+            desc: "日常隱私所需的基礎 VPN 功能。",
+            cta: "選擇 Basic",
+            feats: ["加密 VPN 隧道", "快速節點選擇", "最多 10 台裝置"]
+          },
+          {
+            name: "Plus",
+            desc: "為日常瀏覽提供更強防護。",
+            cta: "選擇 Plus",
+            feats: ["包含 Basic 全部功能", "威脅過濾", "密碼管理器"]
+          },
+          {
+            name: "Complete",
+            desc: "更全面的安全方案，安心無憂。",
+            cta: "選擇 Complete",
+            feats: ["包含 Plus 全部功能", "1 TB 加密儲存", "優先支援"]
+          }
+        ],
+        popularTag: "最受歡迎",
+        trustedEyebrow: "口碑",
+        trustedTitle: "深受個人與團隊信賴",
+        trustedDesc: "來自第三方的評分與評價（示例）協助你更放心地選擇。",
+        ratingLines: [
+          "平均評分 · 5 萬+ 評論",
+          "平均評分 · 20 萬+ 評分",
+          "平均評分 · 100 萬+ 下載"
+        ],
+        faqEyebrow: "常見問題",
+        faqTitle: "常見問題解答",
+        faqDesc: "快速了解常見 VPN 問題。",
+        faqQ: [
+          "VPN 是什麼？",
+          "ISIW-VPN 安全嗎？",
+          "可以同時連線多少裝置？",
+          "可以退款嗎？"
+        ],
+        faqA: [
+          "VPN 會在你的裝置與網際網路之間建立加密通道，協助你在公共網路中保護資料並減少追蹤。",
+          "ISIW-VPN 採用強加密並堅持隱私優先。建議保持應用更新，並在可用時啟用多因素驗證。",
+          "方案支援多裝置使用，你可以在手機、電腦、平板等裝置上同時開啟保護。",
+          "可以。我們提供 30 天退款保證，讓你可以無風險試用 ISIW-VPN。"
+        ],
+        ctaTitle: "開始你的線上安全之旅",
+        ctaDesc: "幾分鐘即可開啟保護，並提供 30 天退款保證。",
+        learnMore: "了解更多",
+        footerBlurb: "隱私優先的 VPN 防護，適用於日常瀏覽、辦公與出行。",
+        footerSupport: "支援信箱：support@isiw-vpn.example",
+        footerCols: ["產品", "公司", "支援"],
+        footerLinks: [
+          ["VPN 方案", "威脅過濾", "伺服器網路", "企業 VPN"],
+          ["關於我們", "部落格", "加入我們", "媒體"],
+          ["常見問題", "幫助中心", "安裝教學", "聯絡我們"]
+        ],
+        copyright: "© 2026 ISIW-VPN · 保留所有權利。"
+      }
+    };
+
+    const detectLang = () => {
+      const raw = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+      const l = String(raw).toLowerCase();
+      if (l.startsWith('zh')) {
+        if (l.includes('hant') || l.includes('hk') || l.includes('tw') || l.includes('mo')) return 'zh-Hant';
+        return 'zh-Hans';
+      }
+      return 'en';
+    };
+
+    const getLang = () => {
+      const p = new URLSearchParams(location.search);
+      const forced = p.get('lang');
+      if (forced) return forced;
+      const stored = localStorage.getItem('lang');
+      if (stored) return stored;
+      return detectLang();
+    };
+
+    const setTextAfterIcon = (el, text) => {
+      if (!el) return;
+      // Replace any text nodes (keep the svg).
+      const nodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
+      if (nodes.length) {
+        nodes.forEach((n, i) => { n.textContent = (i === 0 ? ' ' : '') + text; });
+      } else {
+        el.append(document.createTextNode(' ' + text));
+      }
+    };
+
+    const applyLang = (langKey) => {
+      const lang = I18N[langKey] ? langKey : 'en';
+      const t = I18N[lang];
+      document.documentElement.lang = (lang === 'en') ? 'en' : lang;
+
+      document.title = (lang === 'en') ? 'ISIW-VPN — A safer, open internet' :
+        (lang === 'zh-Hans') ? 'ISIW-VPN — 更安全的开放互联网' :
+        'ISIW-VPN — 更安全的開放網際網路';
+
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) {
+        meta.setAttribute('content', (lang === 'en')
+          ? 'ISIW-VPN is a privacy-first VPN experience with secure encryption, fast connections, and simple protection across your devices.'
+          : (lang === 'zh-Hans')
+            ? 'ISIW-VPN 是隐私优先的 VPN 服务：强加密、快速连接，多设备轻松保护。'
+            : 'ISIW-VPN 是隱私優先的 VPN 服務：強加密、快速連線，多裝置輕鬆保護。'
+        );
+      }
+
+      // Nav
+      const nav = document.querySelectorAll('.nav-links a');
+      nav.forEach((a, i) => { if (t.nav[i]) a.textContent = t.nav[i]; });
+      const signIn = document.querySelector('.nav-actions .btn-ghost');
+      if (signIn) signIn.textContent = t.signIn;
+      const getTop = document.querySelector('.nav-actions .btn-primary');
+      if (getTop) getTop.textContent = t.getBrand;
+
+      // Hero
+      const badge = document.querySelector('.hero .badge');
+      if (badge) {
+        // keep dot element
+        const dot = badge.querySelector('.badge-dot');
+        if (dot) {
+          // remove existing text nodes then add
+          Array.from(badge.childNodes).forEach(n => { if (n.nodeType === Node.TEXT_NODE) badge.removeChild(n); });
+          badge.append(document.createTextNode(' ' + t.badge));
+        } else {
+          badge.textContent = t.badge;
+        }
+      }
+      const h1 = document.querySelector('.hero h1');
+      if (h1) h1.textContent = t.heroTitle;
+      const hsub = document.querySelector('.hero .hero-sub');
+      if (hsub) hsub.textContent = t.heroSub;
+      const heroBtn = document.querySelector('.hero-actions .btn-primary');
+      if (heroBtn) heroBtn.textContent = t.heroCta;
+      setTextAfterIcon(document.querySelector('.hero-actions .guarantee'), t.guarantee);
+
+      const pills = document.querySelectorAll('.trust-row .pill');
+      pills.forEach((p, i) => { if (t.trust[i]) p.textContent = t.trust[i]; });
+
+      // Promo
+      const promoTitle = document.querySelector('.promo-title');
+      if (promoTitle) promoTitle.textContent = t.promoTitle;
+      const promoBtn = document.querySelector('.promo .btn-primary');
+      if (promoBtn) promoBtn.textContent = t.getBrand;
+
+      // Features section
+      const fEyebrow = document.querySelector('#features .eyebrow');
+      if (fEyebrow) fEyebrow.textContent = t.featuresEyebrow;
+      const fTitle = document.querySelector('#features h2');
+      if (fTitle) fTitle.textContent = t.featuresTitle;
+      const fDesc = document.querySelector('#features .stack-12 p');
+      if (fDesc) fDesc.textContent = t.featuresDesc;
+      const cards = document.querySelectorAll('#features .card');
+      cards.forEach((c, i) => {
+        const item = t.featureCards[i];
+        if (!item) return;
+        const hh = c.querySelector('h3');
+        const pp = c.querySelector('p');
+        if (hh) hh.textContent = item.h;
+        if (pp) pp.textContent = item.p;
+      });
+
+      // Network
+      const nEyebrow = document.querySelector('#servers .eyebrow');
+      if (nEyebrow) nEyebrow.textContent = t.networkEyebrow;
+      const nTitle = document.querySelector('#servers h2');
+      if (nTitle) nTitle.textContent = t.networkTitle;
+      const nDesc = document.querySelector('#servers .stack-12 p');
+      if (nDesc) nDesc.textContent = t.networkDesc;
+      const statSpans = document.querySelectorAll('#servers .stat span');
+      if (statSpans[0]) statSpans[0].textContent = t.statLabels[0];
+      if (statSpans[1]) statSpans[1].textContent = t.statLabels[1];
+      if (statSpans[2]) statSpans[2].textContent = t.statLabels[2];
+
+      // Pricing
+      const pEyebrow = document.querySelector('#pricing .eyebrow');
+      if (pEyebrow) pEyebrow.textContent = t.pricingEyebrow;
+      const pTitle = document.querySelector('#pricing h2');
+      if (pTitle) pTitle.textContent = t.pricingTitle;
+      const pIntro = document.querySelector('#pricing .stack-12 p');
+      if (pIntro) {
+        pIntro.innerHTML = `${t.pricingIntro} <a class="link" href="#faq">${t.seeFaq}</a>`;
+      }
+      const popular = document.querySelector('#pricing .tag');
+      if (popular) popular.textContent = t.popularTag;
+
+      const plans = document.querySelectorAll('#pricing .plan');
+      plans.forEach((planEl, i) => {
+        const pl = t.plans[i];
+        if (!pl) return;
+        const name = planEl.querySelector('.plan-name');
+        const desc = planEl.querySelector('.plan-desc');
+        if (name) name.textContent = pl.name;
+        if (desc) desc.textContent = pl.desc;
+        const btn = planEl.querySelector('.btn-primary');
+        if (btn) btn.textContent = pl.cta;
+        // features lines
+        const feats = planEl.querySelectorAll('.features .feat');
+        feats.forEach((f, idx) => {
+          if (!pl.feats[idx]) return;
+          // replace text node after svg
+          Array.from(f.childNodes).forEach((n) => {
+            if (n.nodeType === Node.TEXT_NODE) n.textContent = pl.feats[idx];
+          });
+          if (!Array.from(f.childNodes).some(n => n.nodeType === Node.TEXT_NODE)) {
+            f.append(document.createTextNode(pl.feats[idx]));
+          }
+        });
+        // guarantee text inside plan
+        const g = planEl.querySelector('.guarantee');
+        if (g) setTextAfterIcon(g, t.guarantee);
+      });
+
+      // Trusted
+      const tEyebrow = document.querySelector('.section.alt .eyebrow');
+      if (tEyebrow) tEyebrow.textContent = t.trustedEyebrow;
+      const tTitle = document.querySelector('.section.alt h2');
+      if (tTitle) tTitle.textContent = t.trustedTitle;
+      const tDesc = document.querySelector('.section.alt .stack-12 p');
+      if (tDesc) tDesc.textContent = t.trustedDesc;
+
+      const ratingPs = document.querySelectorAll('.ratings .rating p');
+      ratingPs.forEach((rp, i) => {
+        const strong = rp.querySelector('strong');
+        const score = strong ? strong.textContent : '';
+        const suffix = t.ratingLines[i] || '';
+        rp.innerHTML = `<strong>${score}</strong> ${suffix}`;
+      });
+
+      // FAQ
+      const fqEyebrow = document.querySelector('#faq .eyebrow');
+      if (fqEyebrow) fqEyebrow.textContent = t.faqEyebrow;
+      const fqTitle = document.querySelector('#faq h2');
+      if (fqTitle) fqTitle.textContent = t.faqTitle;
+      const fqDesc = document.querySelector('#faq .stack-12 p');
+      if (fqDesc) fqDesc.textContent = t.faqDesc;
+
+      const qs = document.querySelectorAll('#faq .qa .q');
+      qs.forEach((q, i) => {
+        if (!t.faqQ[i]) return;
+        // The first child is usually a text node containing the question.
+        const firstText = Array.from(q.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
+        if (firstText) firstText.textContent = t.faqQ[i] + ' ';
+      });
+      const as = document.querySelectorAll('#faq .qa .a p');
+      as.forEach((p, i) => { if (t.faqA[i]) p.textContent = t.faqA[i]; });
+
+      // Bottom CTA
+      const ctaH = document.querySelector('.cta h3');
+      if (ctaH) ctaH.textContent = t.ctaTitle;
+      const ctaP = document.querySelector('.cta p');
+      if (ctaP) ctaP.textContent = t.ctaDesc;
+      const ctaBtn = document.querySelector('.cta .btn-primary');
+      if (ctaBtn) ctaBtn.textContent = t.getBrand;
+      const ctaLearn = document.querySelector('.cta .btn-ghost');
+      if (ctaLearn) ctaLearn.textContent = t.learnMore;
+
+      // Footer
+      const footerBrandPs = document.querySelectorAll('.footer-brand p');
+      if (footerBrandPs[0]) footerBrandPs[0].textContent = t.footerBlurb;
+      if (footerBrandPs[1]) footerBrandPs[1].textContent = t.footerSupport;
+
+      const footerH = document.querySelectorAll('.footer-col h4');
+      footerH.forEach((h, i) => { if (t.footerCols[i]) h.textContent = t.footerCols[i]; });
+
+      const footerCols = document.querySelectorAll('.footer-col');
+      footerCols.forEach((col, i) => {
+        const links = col.querySelectorAll('a');
+        const arr = t.footerLinks[i];
+        if (!arr) return;
+        links.forEach((a, idx) => { if (arr[idx]) a.textContent = arr[idx]; });
+      });
+
+      const bottom = document.querySelector('.footer-bottom .container');
+      if (bottom) bottom.textContent = t.copyright;
+    };
+
+    applyLang(getLang());
+
     // Header scroll
     const headerWrap = document.getElementById('headerWrap');
     const updateHeader = () => {
