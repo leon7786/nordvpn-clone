@@ -25,6 +25,7 @@
       --accent-soft: #ecf9ee;     /* --color-success-subtle */
       --warning: #fac900;         /* --bg-warning */
       --danger: #e02f1f;          /* --bg-critical */
+      --cta: #e02f1f;             /* Nord-style red CTA */
       --shadow: 0 20px 50px rgba(20, 20, 21, 0.10);
       --shadow-soft: 0 10px 28px rgba(20, 20, 21, 0.08);
       --radius: 20px;             /* --radius-lg */
@@ -164,11 +165,16 @@
     .btn-ghost:hover { background: rgba(0,0,0,0.04); }
 
     .btn-primary {
-      background: var(--primary);
+      background: var(--cta);
       color: #ffffff;
-      padding: 12px 18px;
-      border-radius: 999px;
+      padding: 11px 28px;
+      border-radius: 9999px;
       box-shadow: none;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
     }
 
     .btn-primary:hover { filter: brightness(0.98); }
@@ -202,15 +208,15 @@
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: #edf3ff;
-      border: 1px solid #d6e3fb;
-      color: var(--text-soft);
+      gap: 10px;
+      border-radius: 9999px;
+      padding: 7px 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--text);
       font-size: 14px;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       animation: fadeUp .65s ease both;
     }
 
@@ -242,10 +248,11 @@
     }
 
     .hero-sub {
-      margin: 18px 0 0;
-      max-width: 620px;
+      margin: 16px 0 0;
+      max-width: 640px;
       color: var(--text-soft);
-      font-size: clamp(1rem, 1.8vw, 1.12rem);
+      font-size: 14px;
+      line-height: 21px;
       animation: fadeUp .75s .18s ease both;
     }
 
@@ -259,10 +266,8 @@
     }
 
     .hero-actions .btn-primary {
-      padding: 14px 22px;
       font-size: 16px;
       font-weight: 600;
-      border-radius: 999px;
     }
 
     .guarantee {
