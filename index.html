@@ -71,7 +71,11 @@
     .link:hover { color: #6b90fa; }
 
     .section {
-      padding: 72px 0;
+      padding: 80px 0;
+    }
+
+    @media (max-width: 980px) {
+      .section { padding: 64px 0; }
     }
 
     .section.alt {
@@ -197,7 +201,11 @@
       border-radius: var(--radius-sm);
     }
 
-    .nav-links a:hover { color: var(--text-muted); }
+    .nav-links a:focus-visible { box-shadow: var(--focus-ring); }
+
+    /* Nord-like hover: other links fade, hovered stays strong */
+    .nav-links:hover a { color: var(--text-muted); }
+    .nav-links a:hover { color: var(--text); }
 
     .nav-actions { display: flex; align-items: center; gap: 12px; }
 
@@ -543,14 +551,17 @@
       align-items: stretch;
     }
 
+    /* Make plan cards align internally like Nord (CTA pinned) */
     .plan {
       border-radius: 24px;
       border: 1px solid var(--line);
       background: var(--surface);
       padding: 22px;
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 14px;
       position: relative;
+      min-height: 520px;
     }
 
     .plan.popular {
@@ -588,7 +599,7 @@
     .price strong { font-size: 40px; line-height: 1; letter-spacing: -0.02em; }
     .price span { color: var(--text-soft); font-size: 14px; }
 
-    .features { display: grid; gap: 10px; margin-top: 6px; }
+    .features { display: grid; gap: 10px; margin-top: 8px; }
     .feat {
       display: flex;
       gap: 10px;
@@ -600,7 +611,7 @@
 
     .feat svg { width: 18px; height: 18px; color: var(--green); flex-shrink: 0; margin-top: 1px; }
 
-    .plan .btn-primary { width: 100%; justify-content: center; }
+    .plan .btn-primary { width: 100%; justify-content: center; margin-top: auto; }
 
     /* Ratings */
     .ratings {
@@ -652,17 +663,24 @@
 
     .q:hover { background: rgba(0,0,0,0.02); }
 
-    .q svg { width: 18px; height: 18px; transition: transform var(--t) ease; }
+    .q svg { width: 18px; height: 18px; transition: transform .25s cubic-bezier(.4,0,.2,1); }
 
     .a {
       max-height: 0;
       overflow: hidden;
-      transition: max-height .35s ease;
+      transition: max-height .35s cubic-bezier(.4,0,.2,1);
       border-top: 1px solid var(--line);
       background: rgba(255,255,255,0.7);
     }
 
-    .a > div { padding: 14px 18px 18px; }
+    .a > div {
+      padding: 14px 18px 18px;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .qa.open .a > div { opacity: 1; transform: translateY(0); }
 
     .qa.open .q svg { transform: rotate(180deg); }
 
