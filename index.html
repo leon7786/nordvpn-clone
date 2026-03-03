@@ -4,46 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ISIW-VPN — A safer, open internet</title>
-  <meta name="description" content="ISIW-VPN is a privacy-first VPN experience with secure encryption, fast connections, and simple protection across your devices." />
+  <meta name="description" content="ISIW-VPN is a privacy-first VPN service with secure encryption, threat filtering, and smooth protection across all your devices." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      /* Nord-like palette (measured from live nordvpn.com) */
-      --bg: #f7f7f8;              /* --bg-primary */
-      --surface: #ffffff;         /* --bg-secondary */
-      --surface-2: #ededed;       /* --bg-tertiary */
-      --line: #e2e2e4;            /* --color-neutral-200 */
-      --line-strong: #c8c9cb;     /* --border-color-primary */
-
-      --text: #2a2a2d;            /* --color-neutral-900 */
-      --text-soft: #4f5054;       /* --text-secondary */
-      --text-muted: #696a6d;      /* --text-placeholder */
-
-      --blue: #3e5fff;            /* --text-accent */
-      --blue-deep: #243dcc;       /* --color-blue-700 */
-      --blue-soft: #8caef8;       /* --color-blue-400 */
-
-      --green: #0ea464;           /* --color-green-500 */
-      --green-soft: #ecf9ee;      /* --color-success-subtle */
-
-      --warning: #fac900;         /* --bg-warning */
-      --danger: #e02f1f;          /* --bg-critical */
-
-      --radius-sm: 6px;
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --surface-2: #f2f2f4;
+      --line: #e2e2e4;
+      --line-strong: #cbcbcf;
+      --text: #2a2a2d;
+      --text-soft: #4f5054;
+      --text-muted: #696a6d;
+      --blue: #3e5fff;
+      --blue-deep: #243dcc;
+      --blue-soft: #eaf0ff;
+      --green: #0ea464;
+      --danger: #e02f1f;
+      --radius-sm: 8px;
       --radius-md: 12px;
-      --radius-lg: 20px;
-
+      --radius-lg: 18px;
       --container: 1180px;
       --container-margin: 32px;
-
-      --shadow-1: 0 10px 24px rgba(20, 20, 21, 0.08);
-      --shadow-2: 0 20px 60px rgba(20, 20, 21, 0.08);
-
-      --focus-ring: inset 0 0 0 2px var(--blue), inset 0 0 0 4px #fff;
+      --shadow: 0 10px 24px rgba(20,20,21,0.06);
       --t: .25s;
+      --space: 24px;
     }
 
     * { box-sizing: border-box; }
@@ -65,90 +52,131 @@
       margin-inline: auto;
     }
 
-    /* Generic */
-    .muted { color: var(--text-soft); }
-    .link { color: var(--blue); }
-    .link:hover { color: #6b90fa; }
-
-    .section {
-      padding: 80px 0;
-    }
-
-    @media (max-width: 980px) {
-      .section { padding: 64px 0; }
-    }
-
+    .section { padding: 92px 0; }
     .section.alt {
       background: var(--surface);
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
 
-    .eyebrow {
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      margin: 0 0 10px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 40px;
-      line-height: 52px;
-      letter-spacing: -0.256px;
-      font-weight: 600;
-      max-width: 680px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 48px;
-      line-height: 62.4px;
-      letter-spacing: -0.496px;
-      font-weight: 600;
-    }
-
-    h3 {
-      margin: 0;
-      font-size: 18px;
-      line-height: 26px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-
-    p {
-      margin: 0;
-      color: var(--text-soft);
-      font-size: 14px;
-      line-height: 21px;
-    }
-
+    .stack-8 { display: grid; gap: 8px; }
     .stack-10 { display: grid; gap: 10px; }
     .stack-12 { display: grid; gap: 12px; }
     .stack-16 { display: grid; gap: 16px; }
     .stack-20 { display: grid; gap: 20px; }
     .stack-24 { display: grid; gap: 24px; }
 
+    .eyebrow {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 44px;
+      line-height: 56px;
+      letter-spacing: -.02em;
+      font-weight: 700;
+      max-width: 700px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 42px;
+      line-height: 53px;
+      letter-spacing: -.02em;
+      font-weight: 700;
+      max-width: 860px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 28px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 21px;
+      color: var(--text-soft);
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform var(--t) ease, filter var(--t) ease, background-color var(--t) ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--danger);
+      color: #fff;
+      padding: 12px 30px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary:hover { filter: brightness(.97); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line-strong);
+      padding: 11px 20px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-ghost:hover { background: #fff; }
+
+    .n-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #fff;
+      padding: 20px;
+      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
+    }
+
+    .n-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: var(--line-strong);
+    }
+
+    .muted { color: var(--text-muted); }
+
     /* Header */
     .header-wrap {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      border-bottom: 1px solid transparent;
+      inset: 0 0 auto;
+      z-index: 50;
       transition: background-color var(--t) ease, border-color var(--t) ease, box-shadow var(--t) ease;
+      border-bottom: 1px solid transparent;
     }
 
     .header-wrap.scrolled {
-      background: rgba(247, 247, 248, 0.92);
+      background: rgba(247,247,248,.92);
       backdrop-filter: blur(12px);
-      border-bottom-color: rgba(42, 42, 45, 0.10);
-      box-shadow: var(--shadow-1);
+      border-bottom-color: rgba(42,42,45,.1);
+      box-shadow: 0 8px 22px rgba(20,20,21,.07);
     }
 
     .header {
-      height: 69px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -159,18 +187,17 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      white-space: nowrap;
       font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--text);
+      font-weight: 800;
+      letter-spacing: -.01em;
+      white-space: nowrap;
     }
 
     .brand-mark {
       width: 26px;
       height: 26px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, var(--blue-soft), var(--blue));
+      border-radius: 999px;
+      background: linear-gradient(145deg, #90b2ff, #3e5fff);
       display: grid;
       place-items: center;
     }
@@ -179,8 +206,8 @@
       content: "";
       width: 14px;
       height: 9px;
-      border-radius: 10px 10px 5px 5px;
       background: #fff;
+      border-radius: 10px 10px 5px 5px;
       clip-path: polygon(0 100%, 30% 20%, 52% 56%, 76% 10%, 100% 100%);
     }
 
@@ -189,68 +216,24 @@
       align-items: center;
       justify-content: center;
       flex: 1;
-      gap: 24px;
+      gap: 22px;
       font-size: 14px;
       font-weight: 500;
-      color: var(--text);
     }
 
-    .nav-links a {
-      transition: color var(--t) ease;
-      padding: 6px 4px;
-      border-radius: var(--radius-sm);
-    }
-
-    .nav-links a:focus-visible { box-shadow: var(--focus-ring); }
-
-    /* Nord-like hover: other links fade, hovered stays strong */
+    .nav-links a { color: var(--text); }
     .nav-links:hover a { color: var(--text-muted); }
     .nav-links a:hover { color: var(--text); }
 
     .nav-actions { display: flex; align-items: center; gap: 12px; }
 
-    .btn {
-      border: 0;
-      border-radius: 9999px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: transform var(--t) ease, filter var(--t) ease, background-color var(--t) ease;
-      outline: none;
-    }
-
-    .btn:focus-visible { box-shadow: var(--focus-ring); }
-
-    .btn:hover { transform: translateY(-1px); }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      padding: 11px 14px;
-    }
-
-    .btn-ghost:hover { background: rgba(0,0,0,0.04); }
-
-    .btn-primary {
-      background: var(--danger);
-      color: #fff;
-      padding: 11px 28px;
-      height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-    }
-
-    .btn-primary:hover { filter: brightness(0.98); }
-
     .menu-toggle {
       display: none;
       width: 40px;
       height: 40px;
-      border-radius: var(--radius-md);
       border: 1px solid var(--line-strong);
-      background: rgba(255,255,255,0.75);
-      color: var(--text);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,.78);
     }
 
     main { padding-top: 88px; }
@@ -261,47 +244,48 @@
 
     /* Hero */
     .hero {
-      padding: 48px 0 40px;
+      padding: 50px 0 34px;
+      background: radial-gradient(1200px 340px at 82% 0%, #eaf0ff 0%, rgba(234,240,255,0) 65%), var(--bg);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 40px;
+      grid-template-columns: 1.04fr .96fr;
+      gap: 34px;
       align-items: center;
-      min-height: 620px;
+      min-height: 640px;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      border-radius: 9999px;
-      padding: 7px 14px;
-      background: var(--surface);
+      gap: 8px;
       border: 1px solid var(--line);
-      color: var(--text);
-      font-size: 14px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: #fff;
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 18px;
+      color: var(--text-soft);
+      margin-bottom: 20px;
     }
 
     .badge-dot {
       width: 8px;
       height: 8px;
-      border-radius: 50%;
-      background: var(--warning);
-      box-shadow: 0 0 0 4px rgba(250, 201, 0, 0.20);
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(14,164,100,.14);
     }
 
-    .hero-sub { margin-top: 16px; max-width: 640px; }
+    .hero-sub { margin-top: 14px; max-width: 640px; }
 
     .hero-actions {
-      margin-top: 32px;
+      margin-top: 24px;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
       gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
     .guarantee {
@@ -309,498 +293,442 @@
       align-items: center;
       gap: 8px;
       color: var(--text-soft);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
     }
 
     .guarantee svg { color: var(--green); }
 
     .trust-row {
-      margin-top: 28px;
+      margin-top: 20px;
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      align-items: center;
+      flex-wrap: wrap;
     }
 
     .pill {
-      border-radius: 9999px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.72);
-      color: var(--text-soft);
-      font-size: 12px;
+      border-radius: 999px;
+      background: #fff;
       padding: 8px 12px;
-      white-space: nowrap;
-    }
-
-    .logos {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      color: var(--text-muted);
       font-size: 12px;
+      color: var(--text-soft);
+      font-weight: 600;
     }
 
-    .logo-chip {
-      border: 1px solid var(--line);
-      padding: 8px 10px;
-      border-radius: 9999px;
-      background: rgba(255,255,255,0.65);
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 520px;
-      display: grid;
-      place-items: center;
-    }
-
+    .hero-visual { min-height: 560px; position: relative; }
     .visual-glow {
       position: absolute;
-      width: min(560px, 100%);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(circle at 50% 50%, rgba(62, 95, 255, 0.24), rgba(140, 174, 248, 0.18) 38%, transparent 70%);
-      filter: blur(10px);
-      animation: pulse 4s ease-in-out infinite;
+      inset: 28px 26px auto;
+      height: 260px;
+      border-radius: 40px;
+      background: radial-gradient(closest-side, rgba(62,95,255,.22), rgba(62,95,255,0));
+      filter: blur(8px);
+      pointer-events: none;
     }
 
     .visual-card {
       position: relative;
-      width: min(520px, 100%);
-      aspect-ratio: 1.02;
-      border-radius: 32px;
-      background:
-        linear-gradient(175deg, rgba(255,255,255,0.92), rgba(247,247,248,0.9)),
-        linear-gradient(145deg, #dfe2ea, #fff);
-      border: 1px solid rgba(42, 42, 45, 0.12);
-      box-shadow: var(--shadow-2);
-      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 24px 60px rgba(20,20,21,.08);
       transform: perspective(1200px) rotateY(-8deg) rotateX(4deg);
-      animation: float 5.2s ease-in-out infinite;
-    }
-
-    .visual-card::before {
-      content: "";
-      position: absolute;
-      inset: -30% -25% auto;
-      height: 62%;
-      background: radial-gradient(circle at 50% 50%, rgba(62, 95, 255, 0.18), transparent 70%);
-      filter: blur(18px);
-    }
-
-    .scene {
-      width: 100%;
+      animation: float 8s ease-in-out infinite;
       height: 100%;
-      position: relative;
-      z-index: 2;
-      display: grid;
-      place-items: center;
-      padding: 26px;
-    }
-
-    .scene svg {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 16px 22px rgba(20, 20, 21, 0.12));
     }
 
     .scene-badge {
       position: absolute;
-      top: 18px;
-      right: 18px;
-      background: rgba(255,255,255,0.92);
+      left: 24px;
+      top: 22px;
       border: 1px solid var(--line);
-      border-radius: 9999px;
-      padding: 7px 11px;
-      font-size: 12px;
+      border-radius: 999px;
+      background: #fff;
+      font-size: 11px;
       font-weight: 700;
-      color: var(--text);
+      color: var(--text-soft);
+      padding: 7px 10px;
+      z-index: 2;
     }
 
-    /* Promo bar */
-    .promo {
-      padding: 18px 0;
-      background: var(--surface);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .scene {
+      height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(160deg, #fff 0%, #f5f6fb 100%);
+      min-height: 520px;
     }
 
-    .promo-inner {
+    .logo-strip {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .logo-chip {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 10px;
+      min-height: 46px;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* announcement / second row under hero */
+    .announce-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr .8fr;
+      gap: 12px;
+    }
+
+    .announce-main {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      flex-wrap: wrap;
+      padding: 18px 20px;
     }
 
-    .promo-copy {
-      display: grid;
-      gap: 6px;
-    }
+    .announce-main strong { font-size: 22px; letter-spacing: -.02em; }
 
-    .promo-title {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .promo-price {
-      display: flex;
-      gap: 10px;
-      align-items: baseline;
-      color: var(--text-soft);
-      font-size: 14px;
-    }
-
-    .strike { text-decoration: line-through; color: var(--text-muted); }
-    .promo-price strong { color: var(--text); font-size: 18px; }
-
-    /* Cards & grids */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      padding: 20px;
-      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-1);
-      border-color: rgba(42,42,45,0.16);
-    }
+    /* Shared module grids */
+    .grid-2 { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
 
     .icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--blue-soft);
+      border: 1px solid #dbe5ff;
+      color: var(--blue);
       display: grid;
       place-items: center;
-      background: rgba(62, 95, 255, 0.10);
-      color: var(--blue);
       margin-bottom: 12px;
     }
 
     .icon svg { width: 20px; height: 20px; }
 
-    /* Server map */
-    .map {
-      border: 1px solid var(--line);
-      background: var(--surface);
-      border-radius: 28px;
-      padding: 26px;
-      overflow: hidden;
-      position: relative;
-      min-height: 300px;
+    .mini {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 18px;
     }
 
-    .dots {
-      position: absolute;
-      inset: 0;
-      opacity: 0.35;
-      background-image: radial-gradient(rgba(42,42,45,0.25) 0.9px, transparent 0.9px);
-      background-size: 14px 14px;
-      mask-image: radial-gradient(circle at 55% 45%, rgba(0,0,0,0.9), transparent 68%);
-    }
-
-    .node {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--blue);
-      box-shadow: 0 0 0 6px rgba(62,95,255,0.12);
-      animation: nodePulse 2.6s ease-in-out infinite;
-    }
-
-    .node:nth-child(2) { animation-delay: .2s; }
-    .node:nth-child(3) { animation-delay: .4s; }
-
-    .stats {
+    .split {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .stat {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.75);
-      padding: 16px;
-    }
-
-    .stat strong { display: block; font-size: 32px; letter-spacing: -0.02em; }
-    .stat span { color: var(--text-soft); font-size: 14px; }
-
-    /* Pricing */
-    .pricing {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 26px;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 16px;
       align-items: stretch;
     }
 
-    /* Make plan cards align internally like Nord (CTA pinned) */
-    .plan {
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      position: relative;
-      min-height: 520px;
-    }
-
-    .plan.popular {
-      border-color: rgba(62,95,255,0.35);
-      box-shadow: 0 18px 50px rgba(62,95,255,0.12);
-    }
-
-    .tag {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--blue);
-      background: rgba(62,95,255,0.10);
-      border: 1px solid rgba(62,95,255,0.18);
-      padding: 6px 10px;
-      border-radius: 9999px;
-    }
-
-    .plan-head {
+    .bullet-list { display: grid; gap: 8px; margin-top: 10px; }
+    .bullet {
       display: grid;
-      gap: 6px;
-    }
-
-    .plan-name { font-size: 18px; font-weight: 700; }
-    .plan-desc { color: var(--text-soft); font-size: 14px; }
-
-    .price {
-      display: flex;
+      grid-template-columns: 20px 1fr;
+      align-items: start;
       gap: 8px;
-      align-items: baseline;
-    }
-
-    .price strong { font-size: 40px; line-height: 1; letter-spacing: -0.02em; }
-    .price span { color: var(--text-soft); font-size: 14px; }
-
-    .features { display: grid; gap: 10px; margin-top: 8px; }
-    .feat {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
       color: var(--text-soft);
       font-size: 14px;
-      line-height: 21px;
     }
 
-    .feat svg { width: 18px; height: 18px; color: var(--green); flex-shrink: 0; margin-top: 1px; }
-
-    .plan .btn-primary { width: 100%; justify-content: center; margin-top: auto; }
-
-    /* Ratings */
-    .ratings {
+    .dot-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(14,164,100,.14);
+      color: var(--green);
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 26px;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 1px;
     }
 
-    .rating {
+    .stat-bars { display: grid; gap: 10px; margin-top: 6px; }
+
+    .bar-row {
       border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      padding: 18px;
+      border-radius: 10px;
+      background: #fff;
+      padding: 10px;
       display: grid;
+      grid-template-columns: 130px 1fr 60px;
+      gap: 10px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #ededf0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar > span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #7d99ff, #3e5fff);
+      border-radius: 999px;
+    }
+
+    .tab-shell { display: grid; gap: 14px; }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-soft);
+      cursor: pointer;
+      transition: all var(--t) ease;
+    }
+
+    .tab-btn.active {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
       gap: 10px;
     }
 
-    .stars { display: flex; gap: 4px; color: #f5b700; }
+    .kpi strong {
+      font-size: 34px;
+      letter-spacing: -.02em;
+      line-height: 1;
+    }
 
-    /* FAQ */
+    .kpi .mini { margin-top: 5px; }
+
+    .timeline { display: grid; gap: 12px; }
+    .timeline-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #fff;
+      padding: 14px 14px 14px 42px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--blue);
+      position: absolute;
+      left: 18px;
+      top: 20px;
+      box-shadow: 0 0 0 5px rgba(62,95,255,.12);
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 30px;
+      bottom: -18px;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .timeline-item:last-child::after { display: none; }
+
+    .review-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+    .stars { color: #f7b500; letter-spacing: 1px; font-size: 15px; }
+
+    .device-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+    .device-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+    .tag-pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 11px;
+      color: var(--text-soft);
+      padding: 6px 10px;
+      background: #fff;
+      font-weight: 600;
+    }
+
     .faq {
       display: grid;
       gap: 10px;
-      margin-top: 26px;
+      margin-top: 8px;
     }
 
     .qa {
       border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--surface);
+      border-radius: var(--radius-md);
+      background: #fff;
       overflow: hidden;
     }
 
     .q {
       width: 100%;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      background: transparent;
       border: 0;
-      cursor: pointer;
+      background: transparent;
       text-align: left;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      cursor: pointer;
       color: var(--text);
-      transition: background-color var(--t) ease;
+      font-weight: 600;
+      font-size: 15px;
     }
 
-    /* Nord-like subtle hover highlight */
-    .q:hover { background: rgba(0,0,0,0.03); }
-
-    .qa.open .q { background: rgba(0,0,0,0.02); }
-
-    .q svg { width: 18px; height: 18px; transition: transform .25s cubic-bezier(.4,0,.2,1); }
+    .q svg { width: 18px; height: 18px; transition: transform var(--t) ease; }
 
     .a {
       max-height: 0;
       overflow: hidden;
-      transition: max-height .35s cubic-bezier(.4,0,.2,1);
-      border-top: 1px solid var(--line);
-      background: rgba(255,255,255,0.7);
+      transition: max-height .35s ease;
     }
 
-    .a > div {
-      padding: 0 20px 18px;
-      opacity: 0;
-      transform: translateY(-4px);
-      transition: opacity .22s ease, transform .22s ease;
-    }
-
-    .qa.open .a > div {
-      padding-top: 14px;
-    }
-
-    .qa.open .a > div { opacity: 1; transform: translateY(0); }
-
+    .a > div { padding: 0 18px 18px; }
     .qa.open .q svg { transform: rotate(180deg); }
 
-    /* Bottom CTA */
-    .cta {
-      border-radius: 28px;
-      padding: 28px;
-      background:
-        radial-gradient(900px 300px at 90% 0%, rgba(62,95,255,0.18), transparent 60%),
-        radial-gradient(700px 260px at 10% 0%, rgba(14,164,100,0.10), transparent 55%),
-        linear-gradient(180deg, #fff, #f7f7f8);
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+
+    .plan {
       border: 1px solid var(--line);
-      box-shadow: var(--shadow-1);
+      border-radius: 12px;
+      background: #fff;
+      padding: 20px;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
+      gap: 14px;
+      min-height: 100%;
+    }
+
+    .plan.popular { border-color: #8fa7ff; box-shadow: inset 0 0 0 1px #c9d6ff; }
+
+    .plan .price strong { font-size: 34px; letter-spacing: -.02em; }
+
+    .plan ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: var(--text-soft);
+      font-size: 13px;
+    }
+
+    .plan li {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .plan li::before {
+      content: "✓";
+      color: var(--green);
+      font-weight: 700;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .cta {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(120deg,#fff 0%,#f4f7ff 100%);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
       align-items: center;
     }
 
-    .cta h3 { font-size: 22px; line-height: 30px; }
-
-    /* Footer */
     footer {
-      background: #141415;
-      color: rgba(255,255,255,0.92);
-      margin-top: 60px;
+      background: #1d1d22;
+      color: #fff;
+      border-top: 1px solid rgba(255,255,255,.1);
     }
 
-    .footer-top {
-      padding: 48px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .footer-brand {
-      display: grid;
-      gap: 10px;
-    }
-
-    .footer-brand .brand { color: #fff; }
-
-    .footer-brand p { color: rgba(255,255,255,0.72); }
+    .footer-top { padding: 52px 0 28px; }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr repeat(3,1fr); gap: 20px; }
+    .footer-brand p { color: rgba(255,255,255,.72); }
 
     .footer-col h4 {
       margin: 0 0 12px;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
+      font-size: 13px;
+      letter-spacing: .02em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.86);
+      color: rgba(255,255,255,.62);
     }
 
     .footer-col a {
       display: block;
-      padding: 6px 0;
-      color: rgba(255,255,255,0.70);
+      color: rgba(255,255,255,.8);
       font-size: 14px;
-      transition: color var(--t) ease;
+      margin: 8px 0;
     }
 
     .footer-col a:hover { color: #fff; }
 
     .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.14);
       padding: 18px 0;
-      color: rgba(255,255,255,0.60);
       font-size: 13px;
-    }
-
-    /* Animations */
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.95; }
-      50% { transform: scale(1.06); opacity: 0.75; }
+      color: rgba(255,255,255,.6);
     }
 
     @keyframes float {
-      0%, 100% { transform: perspective(1200px) rotateY(-8deg) rotateX(4deg) translateY(0); }
+      0%,100% { transform: perspective(1200px) rotateY(-8deg) rotateX(4deg) translateY(0); }
       50% { transform: perspective(1200px) rotateY(-8deg) rotateX(4deg) translateY(-10px); }
     }
 
-    @keyframes nodePulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 6px rgba(62,95,255,0.12); }
-      50% { transform: scale(1.15); box-shadow: 0 0 0 10px rgba(62,95,255,0.08); }
+    @media (max-width: 1080px) {
+      .hero-grid, .split, .announce-grid { grid-template-columns: 1fr; }
+      .kpi-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .visual-card { transform: none; animation: none; }
     }
 
-    /* Responsive */
     @media (max-width: 980px) {
-      .hero-grid { grid-template-columns: 1fr; min-height: auto; }
-      .hero-visual { order: -1; min-height: 420px; }
-      .grid-3, .pricing, .ratings { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr; }
+      .section { padding: 70px 0; }
+      h1 { font-size: 36px; line-height: 46px; }
+      h2 { font-size: 34px; line-height: 44px; }
+      .grid-4, .grid-3, .review-grid, .device-grid, .pricing-grid, .footer-grid { grid-template-columns: 1fr; }
+      .logo-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .cta { grid-template-columns: 1fr; }
-      h2 { font-size: 36px; line-height: 46px; }
-    }
-
-    @media (max-width: 820px) {
-      .nav-links { display: none; }
+      .bar-row { grid-template-columns: 1fr; }
       .menu-toggle { display: inline-grid; place-items: center; }
-      .nav-actions .btn-primary { display: none; }
+      .nav-links, .nav-actions .btn-primary { display: none; }
     }
 
     @media (max-width: 560px) {
       .container { width: min(100% - 24px, var(--container)); }
-      main { padding-top: 76px; }
       .header { height: 62px; }
-      h1 { font-size: 30px; line-height: 40px; }
+      main { padding-top: 76px; }
     }
   </style>
 </head>
@@ -813,16 +741,16 @@
       </a>
 
       <div class="nav-links" aria-label="Main navigation">
-        <a href="#pricing">Pricing</a>
-        <a href="#features">Features</a>
-        <a href="#servers">Servers</a>
-        <a href="#faq">FAQ</a>
-        <a href="#support">Support</a>
+        <a href="#pricing" data-i18n="nav.pricing"></a>
+        <a href="#features" data-i18n="nav.features"></a>
+        <a href="#servers" data-i18n="nav.servers"></a>
+        <a href="#faq" data-i18n="nav.faq"></a>
+        <a href="#support" data-i18n="nav.support"></a>
       </div>
 
       <div class="nav-actions">
-        <button class="btn btn-ghost" type="button">Sign in</button>
-        <a class="btn btn-primary" href="#pricing">Get ISIW-VPN</a>
+        <a class="btn btn-ghost" href="https://yuanda125.ru/" target="_blank" rel="noopener" data-i18n="nav.signin"></a>
+        <a class="btn btn-primary" href="#pricing" data-i18n="nav.get"></a>
         <button class="menu-toggle" type="button" aria-label="Open navigation" id="menuBtn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </button>
@@ -831,41 +759,32 @@
   </header>
 
   <main>
-    <section class="hero">
+    <!-- 1 Hero -->
+    <section class="hero section">
       <div class="container hero-grid">
-        <div class="reveal in">
-          <div class="badge"><span class="badge-dot"></span> Limited offer · save big on longer plans</div>
-          <h1>The VPN service for a safer, open internet</h1>
-          <p class="hero-sub">ISIW-VPN secures your connection, helps protect public Wi‑Fi sessions, and keeps your browsing smooth across devices.</p>
-
+        <div class="stack-16 reveal in">
+          <div class="badge"><span class="badge-dot"></span><span data-i18n="hero.badge"></span></div>
+          <h1 data-i18n="hero.title"></h1>
+          <p class="hero-sub" data-i18n="hero.sub"></p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#pricing">Get the offer</a>
+            <a class="btn btn-primary" href="#pricing" data-i18n="hero.cta"></a>
             <div class="guarantee">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
-              30-day money-back guarantee
+              <span data-i18n="hero.guarantee"></span>
             </div>
           </div>
-
-          <div class="trust-row" aria-label="Trust indicators">
-            <span class="pill">No-activity policy</span>
-            <span class="pill">AES-256 encryption</span>
-            <span class="pill">24/7 support</span>
-          </div>
-
-          <div class="logos" aria-label="Media logos (text placeholders)">
-            <span class="logo-chip">TechRadar</span>
-            <span class="logo-chip">PCMag</span>
-            <span class="logo-chip">CNET</span>
-            <span class="logo-chip">The Verge</span>
+          <div class="trust-row">
+            <span class="pill" data-i18n="hero.pill1"></span>
+            <span class="pill" data-i18n="hero.pill2"></span>
+            <span class="pill" data-i18n="hero.pill3"></span>
           </div>
         </div>
 
         <div class="hero-visual reveal in" aria-hidden="true">
           <div class="visual-glow"></div>
           <div class="visual-card">
-            <div class="scene-badge">Protected connection</div>
+            <div class="scene-badge" data-i18n="hero.protected"></div>
             <div class="scene">
-              <!-- Original visual (no Nord assets). Designed to feel like a product render. -->
               <svg viewBox="0 0 680 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shield and network visualization">
                 <defs>
                   <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
@@ -877,14 +796,9 @@
                     <stop offset="1" stop-color="#243dcc"/>
                   </linearGradient>
                 </defs>
-
                 <rect x="0" y="0" width="680" height="620" rx="40" fill="url(#bgGrad)"/>
-
-                <!-- soft beams -->
                 <path d="M510 0C440 120 460 260 610 350" fill="none" stroke="rgba(62,95,255,0.18)" stroke-width="34" stroke-linecap="round"/>
                 <path d="M170 0C230 130 210 250 90 360" fill="none" stroke="rgba(14,164,100,0.10)" stroke-width="28" stroke-linecap="round"/>
-
-                <!-- network dots -->
                 <g opacity="0.95">
                   <circle cx="132" cy="168" r="7" fill="#3e5fff"/>
                   <circle cx="540" cy="166" r="7" fill="#3e5fff"/>
@@ -895,245 +809,466 @@
                   <path d="M186 386C248 330 288 272 338 246" fill="none" stroke="rgba(62,95,255,0.22)" stroke-width="4"/>
                   <path d="M494 402C430 332 388 272 338 246" fill="none" stroke="rgba(62,95,255,0.20)" stroke-width="4"/>
                 </g>
-
-                <!-- shield -->
                 <g transform="translate(0 -4)">
                   <path d="M340 164l120 40v90c0 86-48 150-120 186-72-36-120-100-120-186v-90l120-40z" fill="url(#shieldGrad)"/>
                   <path d="M340 198l86 28v64c0 62-34 108-86 138-52-30-86-76-86-138v-64l86-28z" fill="rgba(20, 20, 21, 0.18)"/>
                   <path d="M300 284l32 32 56-56" fill="none" stroke="#f7f7f8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
                 </g>
-
-                <circle cx="584" cy="122" r="22" fill="rgba(62,95,255,0.14)"/>
-                <circle cx="96" cy="146" r="14" fill="rgba(62,95,255,0.10)"/>
               </svg>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="promo">
-      <div class="container promo-inner reveal">
-        <div class="promo-copy">
-          <div class="promo-title">Save up to 72% on a 2‑year plan</div>
-          <div class="promo-price"><span class="strike">$11.99/mo</span> <strong>$3.19/mo</strong> <span>+ 3 months extra</span></div>
+      <div class="container reveal">
+        <div class="logo-strip">
+          <div class="logo-chip">TechRadar</div>
+          <div class="logo-chip">PCMag</div>
+          <div class="logo-chip">Forbes</div>
+          <div class="logo-chip">DigitalTrends</div>
+          <div class="logo-chip">CNET</div>
+          <div class="logo-chip">The Verge</div>
         </div>
-        <a class="btn btn-primary" href="#pricing">Get ISIW-VPN</a>
       </div>
     </section>
 
+    <!-- 2 Offer / density row -->
+    <section class="section" style="padding-top:20px;">
+      <div class="container announce-grid">
+        <article class="n-card announce-main reveal">
+          <div class="stack-8">
+            <div class="eyebrow" data-i18n="offer.eyebrow"></div>
+            <div><strong data-i18n="offer.title"></strong></div>
+            <p data-i18n="offer.sub"></p>
+          </div>
+          <a class="btn btn-primary" href="#pricing" data-i18n="offer.cta"></a>
+        </article>
+        <article class="n-card reveal stack-8">
+          <div class="mini" data-i18n="offer.card1k"></div>
+          <h3 data-i18n="offer.card1h"></h3>
+          <p data-i18n="offer.card1p"></p>
+        </article>
+        <article class="n-card reveal stack-8">
+          <div class="mini" data-i18n="offer.card2k"></div>
+          <h3 data-i18n="offer.card2h"></h3>
+          <p data-i18n="offer.card2p"></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3 More than a VPN -->
     <section id="features" class="section">
       <div class="container stack-20">
         <div class="stack-12 reveal">
-          <div class="eyebrow">Features</div>
-          <h2>Online security starts with a click</h2>
-          <p>Built to feel effortless: strong privacy, smart protection, and reliable speed—without complicated setup.</p>
+          <div class="eyebrow" data-i18n="features.eyebrow"></div>
+          <h2 data-i18n="features.title"></h2>
+          <p data-i18n="features.desc"></p>
         </div>
 
         <div class="grid-3">
-          <article class="card reveal">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3 9-8 11-5-2-8-6-8-11V7l8-4z"/></svg>
+          <article class="n-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3 9-8 11-5-2-8-6-8-11V7l8-4z"/></svg></div><h3 data-i18n="features.cards.0.h"></h3><p data-i18n="features.cards.0.p"></p></article>
+          <article class="n-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v8H4z"/><path d="M9 14v4h6v-4"/></svg></div><h3 data-i18n="features.cards.1.h"></h3><p data-i18n="features.cards.1.p"></p></article>
+          <article class="n-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18"/><path d="M12 3v18"/></svg></div><h3 data-i18n="features.cards.2.h"></h3><p data-i18n="features.cards.2.p"></p></article>
+          <article class="n-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16"/><path d="M6 7v10"/><path d="M18 7v10"/><path d="M8 17h8"/></svg></div><h3 data-i18n="features.cards.3.h"></h3><p data-i18n="features.cards.3.p"></p></article>
+          <article class="n-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3 data-i18n="features.cards.4.h"></h3><p data-i18n="features.cards.4.p"></p></article>
+          <article class="n-card reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8 10-4-4"/></svg></div><h3 data-i18n="features.cards.5.h"></h3><p data-i18n="features.cards.5.p"></p></article>
+        </div>
+
+        <div class="split">
+          <article class="n-card reveal stack-12">
+            <h3 data-i18n="features.splitLeft.h"></h3>
+            <p data-i18n="features.splitLeft.p"></p>
+            <div class="timeline">
+              <div class="timeline-item"><strong data-i18n="features.timeline.0.h"></strong><p data-i18n="features.timeline.0.p"></p></div>
+              <div class="timeline-item"><strong data-i18n="features.timeline.1.h"></strong><p data-i18n="features.timeline.1.p"></p></div>
+              <div class="timeline-item"><strong data-i18n="features.timeline.2.h"></strong><p data-i18n="features.timeline.2.p"></p></div>
             </div>
-            <h3>Secure encryption</h3>
-            <p>Protect your traffic with modern encryption designed for real-world threats.</p>
           </article>
 
-          <article class="card reveal">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20c4 0 8-3 8-8V7l-8-4-8 4v5c0 5 4 8 8 8z"/><path d="M9 12h6"/><path d="M10 16h4"/></svg>
+          <article class="n-card reveal stack-12">
+            <h3 data-i18n="features.splitRight.h"></h3>
+            <p data-i18n="features.splitRight.p"></p>
+            <div class="stat-bars">
+              <div class="bar-row"><span data-i18n="features.bars.0.n"></span><div class="bar"><span style="width:94%"></span></div><strong>94%</strong></div>
+              <div class="bar-row"><span data-i18n="features.bars.1.n"></span><div class="bar"><span style="width:89%"></span></div><strong>89%</strong></div>
+              <div class="bar-row"><span data-i18n="features.bars.2.n"></span><div class="bar"><span style="width:92%"></span></div><strong>92%</strong></div>
+              <div class="bar-row"><span data-i18n="features.bars.3.n"></span><div class="bar"><span style="width:97%"></span></div><strong>97%</strong></div>
             </div>
-            <h3>Threat filtering</h3>
-            <p>Block common trackers and risky links to reduce exposure and distraction.</p>
-          </article>
-
-          <article class="card reveal">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16"/><path d="M6 7v10"/><path d="M18 7v10"/><path d="M8 17h8"/></svg>
-            </div>
-            <h3>Stable performance</h3>
-            <p>Keep streaming and working smoothly with tuned routing and smart selection.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="servers" class="section alt">
+    <!-- 4 Why you should use a VPN -->
+    <section id="why" class="section alt">
       <div class="container stack-20">
         <div class="stack-12 reveal">
-          <div class="eyebrow">Network</div>
-          <h2>A massive network of high-speed servers</h2>
-          <p>Choose fast routes worldwide with dependable uptime and consistent performance.</p>
+          <div class="eyebrow" data-i18n="why.eyebrow"></div>
+          <h2 data-i18n="why.title"></h2>
+          <p data-i18n="why.desc"></p>
         </div>
 
-        <div class="map reveal">
-          <div class="dots" aria-hidden="true"></div>
-          <div class="node" style="left: 22%; top: 38%" aria-hidden="true"></div>
-          <div class="node" style="left: 58%; top: 32%" aria-hidden="true"></div>
-          <div class="node" style="left: 46%; top: 60%" aria-hidden="true"></div>
+        <div class="split">
+          <article class="n-card reveal stack-12">
+            <h3 data-i18n="why.left.h"></h3>
+            <p data-i18n="why.left.p"></p>
+            <div class="bullet-list">
+              <div class="bullet"><span class="dot-check">✓</span><span data-i18n="why.left.b1"></span></div>
+              <div class="bullet"><span class="dot-check">✓</span><span data-i18n="why.left.b2"></span></div>
+              <div class="bullet"><span class="dot-check">✓</span><span data-i18n="why.left.b3"></span></div>
+              <div class="bullet"><span class="dot-check">✓</span><span data-i18n="why.left.b4"></span></div>
+            </div>
+          </article>
 
-          <div class="stats">
-            <div class="stat">
-              <strong data-count="6200">0</strong>
-              <span>servers</span>
+          <div class="stack-12">
+            <article class="n-card reveal">
+              <h3 data-i18n="why.right1.h"></h3>
+              <p data-i18n="why.right1.p"></p>
+              <div class="device-tags">
+                <span class="tag-pill" data-i18n="why.right1.t1"></span>
+                <span class="tag-pill" data-i18n="why.right1.t2"></span>
+                <span class="tag-pill" data-i18n="why.right1.t3"></span>
+                <span class="tag-pill" data-i18n="why.right1.t4"></span>
+              </div>
+            </article>
+            <article class="n-card reveal stack-10">
+              <h3 data-i18n="why.right2.h"></h3>
+              <div class="bar-row"><span data-i18n="why.comp.0"></span><div class="bar"><span style="width:98%"></span></div><strong>98%</strong></div>
+              <div class="bar-row"><span data-i18n="why.comp.1"></span><div class="bar"><span style="width:93%"></span></div><strong>93%</strong></div>
+              <div class="bar-row"><span data-i18n="why.comp.2"></span><div class="bar"><span style="width:90%"></span></div><strong>90%</strong></div>
+              <p class="mini" data-i18n="why.note"></p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 Threat Protection -->
+    <section id="threat-protection" class="section">
+      <div class="container stack-20">
+        <div class="stack-12 reveal">
+          <div class="eyebrow" data-i18n="threat.eyebrow"></div>
+          <h2 data-i18n="threat.title"></h2>
+          <p data-i18n="threat.desc"></p>
+        </div>
+
+        <div class="tab-shell reveal">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="browse" data-i18n="threat.tabs.browse"></button>
+            <button class="tab-btn" data-tab="files" data-i18n="threat.tabs.files"></button>
+            <button class="tab-btn" data-tab="identity" data-i18n="threat.tabs.identity"></button>
+          </div>
+
+          <div class="tab-panel active" data-tab-panel="browse">
+            <div class="grid-3">
+              <article class="n-card"><h3 data-i18n="threat.browse.0.h"></h3><p data-i18n="threat.browse.0.p"></p></article>
+              <article class="n-card"><h3 data-i18n="threat.browse.1.h"></h3><p data-i18n="threat.browse.1.p"></p></article>
+              <article class="n-card"><h3 data-i18n="threat.browse.2.h"></h3><p data-i18n="threat.browse.2.p"></p></article>
             </div>
-            <div class="stat">
-              <strong data-count="110">0</strong>
-              <span>locations</span>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="files">
+            <div class="split">
+              <article class="n-card stack-10">
+                <h3 data-i18n="threat.files.left.h"></h3>
+                <p data-i18n="threat.files.left.p"></p>
+                <div class="bullet-list">
+                  <div class="bullet"><span class="dot-check">✓</span><span data-i18n="threat.files.left.b1"></span></div>
+                  <div class="bullet"><span class="dot-check">✓</span><span data-i18n="threat.files.left.b2"></span></div>
+                  <div class="bullet"><span class="dot-check">✓</span><span data-i18n="threat.files.left.b3"></span></div>
+                </div>
+              </article>
+              <article class="n-card stack-10">
+                <h3 data-i18n="threat.files.right.h"></h3>
+                <div class="bar-row"><span data-i18n="threat.files.right.r1"></span><div class="bar"><span style="width:96%"></span></div><strong>96%</strong></div>
+                <div class="bar-row"><span data-i18n="threat.files.right.r2"></span><div class="bar"><span style="width:91%"></span></div><strong>91%</strong></div>
+                <div class="bar-row"><span data-i18n="threat.files.right.r3"></span><div class="bar"><span style="width:88%"></span></div><strong>88%</strong></div>
+                <p class="mini" data-i18n="threat.files.right.note"></p>
+              </article>
             </div>
-            <div class="stat">
-              <strong>Unlimited</strong>
-              <span>bandwidth</span>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="identity">
+            <div class="grid-2">
+              <article class="n-card stack-10"><h3 data-i18n="threat.identity.0.h"></h3><p data-i18n="threat.identity.0.p"></p></article>
+              <article class="n-card stack-10"><h3 data-i18n="threat.identity.1.h"></h3><p data-i18n="threat.identity.1.p"></p></article>
+              <article class="n-card stack-10"><h3 data-i18n="threat.identity.2.h"></h3><p data-i18n="threat.identity.2.p"></p></article>
+              <article class="n-card stack-10"><h3 data-i18n="threat.identity.3.h"></h3><p data-i18n="threat.identity.3.p"></p></article>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="pricing" class="section">
-      <div class="container">
+    <!-- 6 Numbers -->
+    <section id="stats" class="section alt">
+      <div class="container stack-20">
         <div class="stack-12 reveal">
-          <div class="eyebrow">Pricing</div>
-          <h2>Choose the plan that works for you</h2>
-          <p>Pick a simple plan today. Upgrade or switch anytime.
-            <a class="link" href="#faq">See FAQ</a>
-          </p>
+          <div class="eyebrow" data-i18n="numbers.eyebrow"></div>
+          <h2 data-i18n="numbers.title"></h2>
+          <p data-i18n="numbers.desc"></p>
         </div>
 
-        <div class="pricing">
-          <article class="plan reveal">
-            <div class="plan-head">
-              <div class="plan-name">Basic</div>
-              <div class="plan-desc">VPN essentials for everyday privacy.</div>
-            </div>
-            <div class="price"><strong>$3.19</strong><span>/mo · 2-year</span></div>
-            <div class="features">
-              <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Encrypted VPN tunnel</div>
-              <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Fast server selection</div>
-              <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>10 devices included</div>
-            </div>
-            <a class="btn btn-primary" href="#">Get Basic</a>
-            <div class="guarantee"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>30-day money-back guarantee</div>
-          </article>
+        <div class="kpi-strip">
+          <article class="n-card reveal kpi"><strong data-count="6500">0</strong><p data-i18n="numbers.k1"></p><p class="mini" data-i18n="numbers.k1s"></p></article>
+          <article class="n-card reveal kpi"><strong data-count="118">0</strong><p data-i18n="numbers.k2"></p><p class="mini" data-i18n="numbers.k2s"></p></article>
+          <article class="n-card reveal kpi"><strong data-count="10">0</strong><p data-i18n="numbers.k3"></p><p class="mini" data-i18n="numbers.k3s"></p></article>
+          <article class="n-card reveal kpi"><strong data-count="24">0</strong><p data-i18n="numbers.k4"></p><p class="mini" data-i18n="numbers.k4s"></p></article>
+        </div>
 
-          <article class="plan popular reveal">
-            <div class="tag">Most popular</div>
-            <div class="plan-head">
-              <div class="plan-name">Plus</div>
-              <div class="plan-desc">Extra protection for daily browsing.</div>
-            </div>
-            <div class="price"><strong>$4.29</strong><span>/mo · 2-year</span></div>
-            <div class="features">
-              <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Everything in Basic</div>
-              <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Threat filtering</div>
-              <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Password manager</div>
-            </div>
-            <a class="btn btn-primary" href="#">Get Plus</a>
-            <div class="guarantee"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>30-day money-back guarantee</div>
+        <div class="split">
+          <article class="n-card reveal stack-10">
+            <h3 data-i18n="numbers.left.h"></h3>
+            <div class="bar-row"><span data-i18n="numbers.left.b1"></span><div class="bar"><span style="width:98%"></span></div><strong>98%</strong></div>
+            <div class="bar-row"><span data-i18n="numbers.left.b2"></span><div class="bar"><span style="width:95%"></span></div><strong>95%</strong></div>
+            <div class="bar-row"><span data-i18n="numbers.left.b3"></span><div class="bar"><span style="width:97%"></span></div><strong>97%</strong></div>
+            <div class="bar-row"><span data-i18n="numbers.left.b4"></span><div class="bar"><span style="width:93%"></span></div><strong>93%</strong></div>
           </article>
-
-          <article class="plan reveal">
-            <div class="plan-head">
-              <div class="plan-name">Complete</div>
-              <div class="plan-desc">All-in security for peace of mind.</div>
+          <article class="n-card reveal stack-12">
+            <h3 data-i18n="numbers.right.h"></h3>
+            <p data-i18n="numbers.right.p"></p>
+            <div class="grid-2">
+              <div class="n-card"><strong data-count="72">0</strong><p data-i18n="numbers.right.c1"></p></div>
+              <div class="n-card"><strong data-count="180">0</strong><p data-i18n="numbers.right.c2"></p></div>
+              <div class="n-card"><strong data-count="35">0</strong><p data-i18n="numbers.right.c3"></p></div>
+              <div class="n-card"><strong data-count="99">0</strong><p data-i18n="numbers.right.c4"></p></div>
             </div>
-            <div class="price"><strong>$5.19</strong><span>/mo · 2-year</span></div>
-            <div class="features">
-              <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Everything in Plus</div>
-              <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 TB encrypted storage</div>
-              <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priority support</div>
-            </div>
-            <a class="btn btn-primary" href="#">Get Complete</a>
-            <div class="guarantee"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>30-day money-back guarantee</div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt">
-      <div class="container">
+    <!-- 7 Privacy control -->
+    <section id="privacy-control" class="section">
+      <div class="container stack-20">
         <div class="stack-12 reveal">
-          <div class="eyebrow">Trusted</div>
-          <h2>Trusted by teams and individuals</h2>
-          <p>Independent ratings and reviews (illustrative) help you choose confidently.</p>
+          <div class="eyebrow" data-i18n="privacy.eyebrow"></div>
+          <h2 data-i18n="privacy.title"></h2>
+          <p data-i18n="privacy.desc"></p>
         </div>
 
-        <div class="ratings">
-          <div class="rating reveal">
-            <div class="stars" aria-hidden="true">
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <div class="split">
+          <article class="n-card reveal stack-12">
+            <h3 data-i18n="privacy.left.h"></h3>
+            <p data-i18n="privacy.left.p"></p>
+            <div class="grid-2">
+              <div class="n-card stack-8"><strong data-i18n="privacy.left.c1h"></strong><p data-i18n="privacy.left.c1p"></p></div>
+              <div class="n-card stack-8"><strong data-i18n="privacy.left.c2h"></strong><p data-i18n="privacy.left.c2p"></p></div>
+              <div class="n-card stack-8"><strong data-i18n="privacy.left.c3h"></strong><p data-i18n="privacy.left.c3p"></p></div>
+              <div class="n-card stack-8"><strong data-i18n="privacy.left.c4h"></strong><p data-i18n="privacy.left.c4p"></p></div>
             </div>
-            <h3>Trustpilot</h3>
-            <p><strong>4.5</strong> average rating · 50k+ reviews</p>
-          </div>
-          <div class="rating reveal">
-            <div class="stars" aria-hidden="true">
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+          </article>
+
+          <article class="n-card reveal stack-12">
+            <h3 data-i18n="privacy.right.h"></h3>
+            <div class="timeline">
+              <div class="timeline-item"><strong data-i18n="privacy.right.t1h"></strong><p data-i18n="privacy.right.t1p"></p></div>
+              <div class="timeline-item"><strong data-i18n="privacy.right.t2h"></strong><p data-i18n="privacy.right.t2p"></p></div>
+              <div class="timeline-item"><strong data-i18n="privacy.right.t3h"></strong><p data-i18n="privacy.right.t3p"></p></div>
+              <div class="timeline-item"><strong data-i18n="privacy.right.t4h"></strong><p data-i18n="privacy.right.t4p"></p></div>
             </div>
-            <h3>App Store</h3>
-            <p><strong>4.7</strong> average rating · 200k+ ratings</p>
-          </div>
-          <div class="rating reveal">
-            <div class="stars" aria-hidden="true">
-              <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-            </div>
-            <h3>Google Play</h3>
-            <p><strong>4.3</strong> average rating · 1M+ downloads</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="section">
-      <div class="container">
+    <!-- 8 Reviews -->
+    <section id="reviews" class="section alt">
+      <div class="container stack-20">
         <div class="stack-12 reveal">
-          <div class="eyebrow">FAQ</div>
-          <h2>Frequently Asked Questions</h2>
-          <p>Quick answers to common VPN questions.</p>
+          <div class="eyebrow" data-i18n="reviews.eyebrow"></div>
+          <h2 data-i18n="reviews.title"></h2>
+          <p data-i18n="reviews.desc"></p>
+        </div>
+
+        <div class="review-grid">
+          <article class="n-card reveal stack-10"><div class="stars">★★★★★</div><h3 data-i18n="reviews.cards.0.h"></h3><p data-i18n="reviews.cards.0.p"></p><p class="mini" data-i18n="reviews.cards.0.a"></p></article>
+          <article class="n-card reveal stack-10"><div class="stars">★★★★★</div><h3 data-i18n="reviews.cards.1.h"></h3><p data-i18n="reviews.cards.1.p"></p><p class="mini" data-i18n="reviews.cards.1.a"></p></article>
+          <article class="n-card reveal stack-10"><div class="stars">★★★★☆</div><h3 data-i18n="reviews.cards.2.h"></h3><p data-i18n="reviews.cards.2.p"></p><p class="mini" data-i18n="reviews.cards.2.a"></p></article>
+          <article class="n-card reveal stack-10"><div class="stars">★★★★★</div><h3 data-i18n="reviews.cards.3.h"></h3><p data-i18n="reviews.cards.3.p"></p><p class="mini" data-i18n="reviews.cards.3.a"></p></article>
+          <article class="n-card reveal stack-10"><div class="stars">★★★★☆</div><h3 data-i18n="reviews.cards.4.h"></h3><p data-i18n="reviews.cards.4.p"></p><p class="mini" data-i18n="reviews.cards.4.a"></p></article>
+          <article class="n-card reveal stack-10"><div class="stars">★★★★★</div><h3 data-i18n="reviews.cards.5.h"></h3><p data-i18n="reviews.cards.5.p"></p><p class="mini" data-i18n="reviews.cards.5.a"></p></article>
+        </div>
+
+        <div class="grid-3">
+          <article class="n-card reveal"><h3>Trustpilot</h3><p><strong>4.6</strong> · <span data-i18n="reviews.meta.0"></span></p></article>
+          <article class="n-card reveal"><h3>App Store</h3><p><strong>4.8</strong> · <span data-i18n="reviews.meta.1"></span></p></article>
+          <article class="n-card reveal"><h3>Google Play</h3><p><strong>4.4</strong> · <span data-i18n="reviews.meta.2"></span></p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 Devices -->
+    <section id="servers" class="section">
+      <div class="container stack-20">
+        <div class="stack-12 reveal">
+          <div class="eyebrow" data-i18n="devices.eyebrow"></div>
+          <h2 data-i18n="devices.title"></h2>
+          <p data-i18n="devices.desc"></p>
+        </div>
+
+        <div class="device-grid">
+          <article class="n-card reveal stack-8"><h3 data-i18n="devices.cards.0.h"></h3><p data-i18n="devices.cards.0.p"></p><div class="device-tags"><span class="tag-pill">iOS</span><span class="tag-pill">Android</span><span class="tag-pill" data-i18n="devices.tag.fast"></span></div></article>
+          <article class="n-card reveal stack-8"><h3 data-i18n="devices.cards.1.h"></h3><p data-i18n="devices.cards.1.p"></p><div class="device-tags"><span class="tag-pill">Windows</span><span class="tag-pill">macOS</span><span class="tag-pill" data-i18n="devices.tag.auto"></span></div></article>
+          <article class="n-card reveal stack-8"><h3 data-i18n="devices.cards.2.h"></h3><p data-i18n="devices.cards.2.p"></p><div class="device-tags"><span class="tag-pill">tvOS</span><span class="tag-pill">Android TV</span><span class="tag-pill" data-i18n="devices.tag.stream"></span></div></article>
+          <article class="n-card reveal stack-8"><h3 data-i18n="devices.cards.3.h"></h3><p data-i18n="devices.cards.3.p"></p><div class="device-tags"><span class="tag-pill">Chrome</span><span class="tag-pill">Firefox</span><span class="tag-pill" data-i18n="devices.tag.light"></span></div></article>
+          <article class="n-card reveal stack-8"><h3 data-i18n="devices.cards.4.h"></h3><p data-i18n="devices.cards.4.p"></p><div class="device-tags"><span class="tag-pill">Wi‑Fi 6</span><span class="tag-pill">OpenVPN</span><span class="tag-pill">WireGuard</span></div></article>
+          <article class="n-card reveal stack-8"><h3 data-i18n="devices.cards.5.h"></h3><p data-i18n="devices.cards.5.p"></p><div class="device-tags"><span class="tag-pill" data-i18n="devices.tag.docs"></span><span class="tag-pill" data-i18n="devices.tag.cli"></span><span class="tag-pill" data-i18n="devices.tag.guide"></span></div></article>
+        </div>
+
+        <div class="split">
+          <article class="n-card reveal stack-10">
+            <h3 data-i18n="devices.download.h"></h3>
+            <p data-i18n="devices.download.p"></p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a class="btn btn-ghost" href="#" data-i18n="devices.download.d1"></a>
+              <a class="btn btn-ghost" href="#" data-i18n="devices.download.d2"></a>
+              <a class="btn btn-ghost" href="#" data-i18n="devices.download.d3"></a>
+            </div>
+          </article>
+          <article class="n-card reveal stack-10">
+            <h3 data-i18n="devices.suggest.h"></h3>
+            <p data-i18n="devices.suggest.p"></p>
+            <div class="bar-row"><span data-i18n="devices.suggest.r1"></span><div class="bar"><span style="width:94%"></span></div><strong>94%</strong></div>
+            <div class="bar-row"><span data-i18n="devices.suggest.r2"></span><div class="bar"><span style="width:90%"></span></div><strong>90%</strong></div>
+            <div class="bar-row"><span data-i18n="devices.suggest.r3"></span><div class="bar"><span style="width:88%"></span></div><strong>88%</strong></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 What is a VPN + long FAQ -->
+    <section id="what-is-vpn" class="section alt">
+      <div class="container stack-20">
+        <div id="faq"></div>
+        <div class="stack-12 reveal">
+          <div class="eyebrow" data-i18n="learn.eyebrow"></div>
+          <h2 data-i18n="learn.title"></h2>
+          <p data-i18n="learn.desc"></p>
+        </div>
+
+        <div class="split">
+          <article class="n-card reveal stack-12">
+            <h3 data-i18n="learn.how.h"></h3>
+            <div class="timeline">
+              <div class="timeline-item"><strong data-i18n="learn.how.s1h"></strong><p data-i18n="learn.how.s1p"></p></div>
+              <div class="timeline-item"><strong data-i18n="learn.how.s2h"></strong><p data-i18n="learn.how.s2p"></p></div>
+              <div class="timeline-item"><strong data-i18n="learn.how.s3h"></strong><p data-i18n="learn.how.s3p"></p></div>
+            </div>
+          </article>
+          <article class="n-card reveal stack-12">
+            <h3 data-i18n="learn.when.h"></h3>
+            <div class="bullet-list">
+              <div class="bullet"><span class="dot-check">✓</span><span data-i18n="learn.when.b1"></span></div>
+              <div class="bullet"><span class="dot-check">✓</span><span data-i18n="learn.when.b2"></span></div>
+              <div class="bullet"><span class="dot-check">✓</span><span data-i18n="learn.when.b3"></span></div>
+              <div class="bullet"><span class="dot-check">✓</span><span data-i18n="learn.when.b4"></span></div>
+              <div class="bullet"><span class="dot-check">✓</span><span data-i18n="learn.when.b5"></span></div>
+            </div>
+          </article>
         </div>
 
         <div class="faq" id="faqList">
           <div class="qa reveal">
-            <button class="q" type="button">What is a VPN?
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="a"><div><p>A VPN creates an encrypted tunnel between your device and the internet, helping protect data on public networks and reducing tracking.</p></div></div>
+            <button class="q" type="button"><span data-i18n="learn.faq.0.q"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="a"><div><p data-i18n="learn.faq.0.a"></p></div></div>
           </div>
-
           <div class="qa reveal">
-            <button class="q" type="button">Is ISIW-VPN safe to use?
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="a"><div><p>ISIW-VPN is built with strong encryption and a privacy-first approach. Always keep your apps updated and use multi-factor authentication where possible.</p></div></div>
+            <button class="q" type="button"><span data-i18n="learn.faq.1.q"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="a"><div><p data-i18n="learn.faq.1.a"></p></div></div>
           </div>
-
           <div class="qa reveal">
-            <button class="q" type="button">How many devices can I connect?
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="a"><div><p>Plans include multiple devices so you can protect phones, laptops, and tablets under one account.</p></div></div>
+            <button class="q" type="button"><span data-i18n="learn.faq.2.q"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="a"><div><p data-i18n="learn.faq.2.a"></p></div></div>
           </div>
-
           <div class="qa reveal">
-            <button class="q" type="button">Can I get a refund?
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="a"><div><p>Yes. We include a 30‑day money‑back guarantee so you can try ISIW‑VPN risk‑free.</p></div></div>
+            <button class="q" type="button"><span data-i18n="learn.faq.3.q"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="a"><div><p data-i18n="learn.faq.3.a"></p></div></div>
+          </div>
+          <div class="qa reveal">
+            <button class="q" type="button"><span data-i18n="learn.faq.4.q"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="a"><div><p data-i18n="learn.faq.4.a"></p></div></div>
+          </div>
+          <div class="qa reveal">
+            <button class="q" type="button"><span data-i18n="learn.faq.5.q"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="a"><div><p data-i18n="learn.faq.5.a"></p></div></div>
+          </div>
+          <div class="qa reveal">
+            <button class="q" type="button"><span data-i18n="learn.faq.6.q"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="a"><div><p data-i18n="learn.faq.6.a"></p></div></div>
+          </div>
+          <div class="qa reveal">
+            <button class="q" type="button"><span data-i18n="learn.faq.7.q"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="a"><div><p data-i18n="learn.faq.7.a"></p></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
+    <!-- 11 Bottom CTA + pricing -->
+    <section id="pricing" class="section">
+      <div class="container stack-20">
+        <div class="stack-12 reveal">
+          <div class="eyebrow" data-i18n="pricing.eyebrow"></div>
+          <h2 data-i18n="pricing.title"></h2>
+          <p data-i18n="pricing.desc"></p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="plan reveal">
+            <div class="stack-8">
+              <div class="mini" data-i18n="pricing.p1.tag"></div>
+              <h3 data-i18n="pricing.p1.name"></h3>
+              <p data-i18n="pricing.p1.sub"></p>
+            </div>
+            <div class="price"><strong>$3.19</strong><span>/mo</span></div>
+            <ul>
+              <li data-i18n="pricing.p1.f1"></li>
+              <li data-i18n="pricing.p1.f2"></li>
+              <li data-i18n="pricing.p1.f3"></li>
+            </ul>
+            <a class="btn btn-primary" href="#" data-i18n="pricing.p1.cta"></a>
+          </article>
+
+          <article class="plan popular reveal">
+            <div class="stack-8">
+              <div class="mini" data-i18n="pricing.p2.tag"></div>
+              <h3 data-i18n="pricing.p2.name"></h3>
+              <p data-i18n="pricing.p2.sub"></p>
+            </div>
+            <div class="price"><strong>$4.29</strong><span>/mo</span></div>
+            <ul>
+              <li data-i18n="pricing.p2.f1"></li>
+              <li data-i18n="pricing.p2.f2"></li>
+              <li data-i18n="pricing.p2.f3"></li>
+            </ul>
+            <a class="btn btn-primary" href="#" data-i18n="pricing.p2.cta"></a>
+          </article>
+
+          <article class="plan reveal">
+            <div class="stack-8">
+              <div class="mini" data-i18n="pricing.p3.tag"></div>
+              <h3 data-i18n="pricing.p3.name"></h3>
+              <p data-i18n="pricing.p3.sub"></p>
+            </div>
+            <div class="price"><strong>$5.19</strong><span>/mo</span></div>
+            <ul>
+              <li data-i18n="pricing.p3.f1"></li>
+              <li data-i18n="pricing.p3.f2"></li>
+              <li data-i18n="pricing.p3.f3"></li>
+            </ul>
+            <a class="btn btn-primary" href="#" data-i18n="pricing.p3.cta"></a>
+          </article>
+        </div>
+
         <div class="cta reveal">
           <div class="stack-12">
-            <h3>Start your online security journey</h3>
-            <p>Get protection you can turn on in minutes, with a 30‑day money‑back guarantee.</p>
+            <h3 data-i18n="cta.title"></h3>
+            <p data-i18n="cta.desc"></p>
           </div>
-          <div style="display:flex; gap:12px; align-items:center; justify-content:flex-end; flex-wrap:wrap;">
-            <a class="btn btn-primary" href="#pricing">Get ISIW‑VPN</a>
-            <a class="btn btn-ghost" href="#faq">Learn more</a>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;">
+            <a class="btn btn-primary" href="#" data-i18n="cta.btn1"></a>
+            <a class="btn btn-ghost" href="#faq" data-i18n="cta.btn2"></a>
           </div>
         </div>
       </div>
@@ -1143,301 +1278,925 @@
   <footer id="support">
     <div class="footer-top">
       <div class="container footer-grid">
-        <div class="footer-brand">
+        <div class="footer-brand stack-12">
           <a class="brand" href="#" aria-label="ISIW-VPN">
             <span class="brand-mark" aria-hidden="true"></span>
             <span>ISIW-VPN</span>
           </a>
-          <p>Privacy-first VPN protection for everyday browsing, work, and travel.</p>
-          <p class="muted">Support: support@isiw-vpn.example</p>
+          <p data-i18n="footer.blurb"></p>
+          <p class="muted" data-i18n="footer.support"></p>
         </div>
 
         <div class="footer-col">
-          <h4>Products</h4>
-          <a href="#pricing">VPN Plans</a>
-          <a href="#features">Threat Filtering</a>
-          <a href="#servers">Server Network</a>
-          <a href="#">Business VPN</a>
+          <h4 data-i18n="footer.c1h"></h4>
+          <a href="#pricing" data-i18n="footer.c1.0"></a>
+          <a href="#features" data-i18n="footer.c1.1"></a>
+          <a href="#servers" data-i18n="footer.c1.2"></a>
+          <a href="#" data-i18n="footer.c1.3"></a>
         </div>
 
         <div class="footer-col">
-          <h4>Company</h4>
-          <a href="#">About</a>
-          <a href="#">Blog</a>
-          <a href="#">Careers</a>
-          <a href="#">Press</a>
+          <h4 data-i18n="footer.c2h"></h4>
+          <a href="#" data-i18n="footer.c2.0"></a>
+          <a href="#" data-i18n="footer.c2.1"></a>
+          <a href="#" data-i18n="footer.c2.2"></a>
+          <a href="#" data-i18n="footer.c2.3"></a>
         </div>
 
         <div class="footer-col">
-          <h4>Support</h4>
-          <a href="#faq">FAQ</a>
-          <a href="#">Help Center</a>
-          <a href="#">Setup Tutorials</a>
-          <a href="#">Contact</a>
+          <h4 data-i18n="footer.c3h"></h4>
+          <a href="#faq" data-i18n="footer.c3.0"></a>
+          <a href="#" data-i18n="footer.c3.1"></a>
+          <a href="#" data-i18n="footer.c3.2"></a>
+          <a href="#" data-i18n="footer.c3.3"></a>
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div class="container">© 2026 ISIW‑VPN · All rights reserved.</div>
+      <div class="container" data-i18n="footer.copy"></div>
     </div>
   </footer>
 
   <script>
-    // i18n: auto switch by browser language (en / zh-Hans / zh-Hant)
     const I18N = {
       en: {
-        nav: ["Pricing", "Features", "Servers", "FAQ", "Support"],
-        signIn: "Sign in",
-        getBrand: "Get ISIW-VPN",
-        badge: "Limited offer · save big on longer plans",
-        heroTitle: "The VPN service for a safer, open internet",
-        heroSub: "ISIW-VPN secures your connection, helps protect public Wi-Fi sessions, and keeps your browsing smooth across devices.",
-        heroCta: "Get the offer",
-        guarantee: "30-day money-back guarantee",
-        trust: ["No-activity policy", "AES-256 encryption", "24/7 support"],
-        promoTitle: "Save up to 72% on a 2-year plan",
-        featuresEyebrow: "Features",
-        featuresTitle: "Online security starts with a click",
-        featuresDesc: "Built to feel effortless: strong privacy, smart protection, and reliable speed—without complicated setup.",
-        featureCards: [
-          { h: "Secure encryption", p: "Protect your traffic with modern encryption designed for real-world threats." },
-          { h: "Threat filtering", p: "Block common trackers and risky links to reduce exposure and distraction." },
-          { h: "Stable performance", p: "Keep streaming and working smoothly with tuned routing and smart selection." }
-        ],
-        networkEyebrow: "Network",
-        networkTitle: "A massive network of high-speed servers",
-        networkDesc: "Choose fast routes worldwide with dependable uptime and consistent performance.",
-        statLabels: ["servers", "locations", "bandwidth"],
-        pricingEyebrow: "Pricing",
-        pricingTitle: "Choose the plan that works for you",
-        pricingIntro: "Pick a simple plan today. Upgrade or switch anytime.",
-        seeFaq: "See FAQ",
-        plans: [
-          {
-            name: "Basic",
-            desc: "VPN essentials for everyday privacy.",
-            cta: "Get Basic",
-            feats: ["Encrypted VPN tunnel", "Fast server selection", "10 devices included"]
+        metaTitle: "ISIW-VPN — A safer, open internet",
+        metaDesc: "ISIW-VPN is a privacy-first VPN service with secure encryption, threat filtering, and smooth protection across all your devices.",
+        nav: {
+          pricing: "Pricing",
+          features: "Features",
+          servers: "Devices",
+          faq: "FAQ",
+          support: "Support",
+          signin: "Sign in",
+          get: "Get ISIW-VPN"
+        },
+        hero: {
+          badge: "Limited offer · save more on long plans",
+          title: "The VPN service for a safer, open internet",
+          sub: "ISIW-VPN secures your connection, blocks risky content, and keeps your experience smooth across phones, laptops, routers, and TVs.",
+          cta: "Get the offer",
+          guarantee: "30-day money-back guarantee",
+          protected: "Protected connection",
+          pill1: "No-activity policy",
+          pill2: "AES-256 encryption",
+          pill3: "24/7 support"
+        },
+        offer: {
+          eyebrow: "Special deal",
+          title: "Save up to 72% on a 2-year plan + 3 extra months",
+          sub: "One account protects up to 10 devices with a full-featured security toolkit.",
+          cta: "Get ISIW-VPN",
+          card1k: "Average setup time",
+          card1h: "< 3 minutes",
+          card1p: "Install, sign in, and connect in just a few taps.",
+          card2k: "Money-back",
+          card2h: "30 days",
+          card2p: "Try every feature with no long-term risk."
+        },
+        features: {
+          eyebrow: "More than a VPN",
+          title: "Online security that stays fast, simple, and complete",
+          desc: "ISIW-VPN combines encrypted traffic, real-time threat filtering, and account safeguards in one lightweight app.",
+          cards: [
+            { h: "Secure encryption", p: "Protect your connection on public Wi-Fi, office networks, and shared hotspots." },
+            { h: "DNS leak prevention", p: "Reduce exposed requests by routing traffic through hardened DNS paths." },
+            { h: "Kill switch", p: "Automatically block traffic if your VPN tunnel unexpectedly drops." },
+            { h: "Smart server pick", p: "Pick low-latency servers automatically based on your use case." },
+            { h: "Always-on option", p: "Stay protected with automatic reconnect when network changes." },
+            { h: "Secure protocols", p: "Use modern protocols tuned for high speed and strong resilience." }
+          ],
+          splitLeft: {
+            h: "Built for daily habits",
+            p: "Protection should happen in the background while you browse, stream, work, and travel."
           },
-          {
-            name: "Plus",
-            desc: "Extra protection for daily browsing.",
-            cta: "Get Plus",
-            feats: ["Everything in Basic", "Threat filtering", "Password manager"]
+          timeline: [
+            { h: "Morning sync", p: "Auto-connect as your laptop joins café or hotel Wi-Fi." },
+            { h: "Work sessions", p: "Keep internal dashboards and docs encrypted in transit." },
+            { h: "Evening streaming", p: "Stay stable with low-congestion route selection." }
+          ],
+          splitRight: {
+            h: "Consistent quality signals",
+            p: "Illustrative service metrics from internal health monitoring across major regions."
           },
-          {
-            name: "Complete",
-            desc: "All-in security for peace of mind.",
-            cta: "Get Complete",
-            feats: ["Everything in Plus", "1 TB encrypted storage", "Priority support"]
+          bars: [
+            { n: "Connection success" },
+            { n: "Session stability" },
+            { n: "Threat block ratio" },
+            { n: "App launch reliability" }
+          ]
+        },
+        why: {
+          eyebrow: "Why you should use a VPN",
+          title: "Reduce online exposure in everyday scenarios",
+          desc: "A VPN cannot solve every security issue, but it can meaningfully reduce risk in common situations.",
+          left: {
+            h: "Where VPN protection helps most",
+            p: "Use ISIW-VPN as part of a layered setup alongside strong passwords and MFA.",
+            b1: "Public Wi-Fi in airports, cafés, and shared co-working spaces",
+            b2: "Remote work sessions with confidential dashboards or files",
+            b3: "Reducing passive network-level profiling from local networks",
+            b4: "Keeping your apps connected securely during network handoff"
+          },
+          right1: {
+            h: "Use-case coverage",
+            p: "One account supports personal, family, travel, and hybrid-work devices.",
+            t1: "Travel",
+            t2: "Remote work",
+            t3: "Online banking",
+            t4: "Daily browsing"
+          },
+          right2: {
+            h: "Protection checklist completion"
+          },
+          comp: ["Traffic encryption", "Suspicious domain filtering", "Identity alerts"],
+          note: "Percentages are illustrative service indicators, not legal guarantees."
+        },
+        threat: {
+          eyebrow: "Threat protection",
+          title: "Protect before risky content reaches your screen",
+          desc: "Threat Protection features help block common malicious domains, deceptive ads, and suspicious downloads.",
+          tabs: { browse: "Browsing", files: "Downloads", identity: "Identity" },
+          browse: [
+            { h: "Malicious domain blocking", p: "Stop known harmful domains before they load in your browser." },
+            { h: "Tracker reduction", p: "Reduce third-party tracking requests for cleaner and faster pages." },
+            { h: "Intrusive ad filtering", p: "Lower clutter and avoid deceptive ad click paths." }
+          ],
+          files: {
+            left: {
+              h: "Pre-download checks",
+              p: "Downloaded files are checked against known risk signatures and behavior signals.",
+              b1: "Blocklisted hash matching",
+              b2: "Suspicious extension alerts",
+              b3: "Prompt before opening risky items"
+            },
+            right: {
+              h: "Detection flow coverage",
+              r1: "Known malware patterns",
+              r2: "Unknown but suspicious files",
+              r3: "Phishing attachment signals",
+              note: "Coverage data reflects internal testing datasets and public samples."
+            }
+          },
+          identity: [
+            { h: "Data leak alerts", p: "Get notified when monitored emails appear in known breach datasets." },
+            { h: "Credential health tips", p: "Receive reminders for weak, reused, or outdated password patterns." },
+            { h: "Unsafe form warnings", p: "See warnings before submitting credentials to suspicious pages." },
+            { h: "Security center summary", p: "Review all alerts in one dashboard to act quickly." }
+          ]
+        },
+        numbers: {
+          eyebrow: "Numbers",
+          title: "Service scale and reliability at a glance",
+          desc: "Global capacity and monitoring designed for low latency and stable throughput.",
+          k1: "Servers worldwide",
+          k1s: "Across core and edge locations",
+          k2: "Locations",
+          k2s: "Regional diversity for route flexibility",
+          k3: "Devices per account",
+          k3s: "Protect your full personal setup",
+          k4: "Support availability",
+          k4s: "Hours per day, every day",
+          left: {
+            h: "Observed platform performance",
+            b1: "Median session uptime",
+            b2: "Reconnect success rate",
+            b3: "Protocol negotiation success",
+            b4: "Control plane availability"
+          },
+          right: {
+            h: "Operational response",
+            p: "Security and infrastructure teams continuously validate routing quality, endpoint health, and abuse patterns.",
+            c1: "response teams",
+            c2: "monitoring signals",
+            c3: "release checks / week",
+            c4: "critical alerts < 15min"
           }
-        ],
-        popularTag: "Most popular",
-        trustedEyebrow: "Trusted",
-        trustedTitle: "Trusted by teams and individuals",
-        trustedDesc: "Independent ratings and reviews (illustrative) help you choose confidently.",
-        ratingLines: [
-          "average rating · 50k+ reviews",
-          "average rating · 200k+ ratings",
-          "average rating · 1M+ downloads"
-        ],
-        faqEyebrow: "FAQ",
-        faqTitle: "Frequently Asked Questions",
-        faqDesc: "Quick answers to common VPN questions.",
-        faqQ: [
-          "What is a VPN?",
-          "Is ISIW-VPN safe to use?",
-          "How many devices can I connect?",
-          "Can I get a refund?"
-        ],
-        faqA: [
-          "A VPN creates an encrypted tunnel between your device and the internet, helping protect data on public networks and reducing tracking.",
-          "ISIW-VPN is built with strong encryption and a privacy-first approach. Always keep your apps updated and use multi-factor authentication where possible.",
-          "Plans include multiple devices so you can protect phones, laptops, and tablets under one account.",
-          "Yes. We include a 30-day money-back guarantee so you can try ISIW-VPN risk-free."
-        ],
-        ctaTitle: "Start your online security journey",
-        ctaDesc: "Get protection you can turn on in minutes, with a 30-day money-back guarantee.",
-        learnMore: "Learn more",
-        footerBlurb: "Privacy-first VPN protection for everyday browsing, work, and travel.",
-        footerSupport: "Support: support@isiw-vpn.example",
-        footerCols: ["Products", "Company", "Support"],
-        footerLinks: [
-          ["VPN Plans", "Threat Filtering", "Server Network", "Business VPN"],
-          ["About", "Blog", "Careers", "Press"],
-          ["FAQ", "Help Center", "Setup Tutorials", "Contact"]
-        ],
-        copyright: "© 2026 ISIW-VPN · All rights reserved."
+        },
+        privacy: {
+          eyebrow: "Privacy control",
+          title: "Control what data is visible and how connections behave",
+          desc: "Fine-tune privacy features with clear defaults and transparent settings.",
+          left: {
+            h: "Control center",
+            p: "Adjust protection layers by profile — travel mode, work mode, and strict mode.",
+            c1h: "Custom DNS",
+            c1p: "Route DNS via trusted secure resolvers.",
+            c2h: "Split tunneling",
+            c2p: "Choose apps that bypass VPN when needed.",
+            c3h: "Protocol lock",
+            c3p: "Pin a protocol for consistency-sensitive workflows.",
+            c4h: "Local network rules",
+            c4p: "Allow trusted local services while tunnel stays active."
+          },
+          right: {
+            h: "Policy transparency",
+            t1h: "Minimal diagnostics",
+            t1p: "Collect only essential diagnostics for stability and abuse prevention.",
+            t2h: "No activity logs",
+            t2p: "Browsing activity content is not stored in account histories.",
+            t3h: "Independent verification",
+            t3p: "Infrastructure and controls can be reviewed through external assessments.",
+            t4h: "Granular permissions",
+            t4p: "Mobile and desktop apps request permissions only when required."
+          }
+        },
+        reviews: {
+          eyebrow: "Reviews",
+          title: "Trusted by people who want practical privacy",
+          desc: "Illustrative feedback from users in travel, remote work, gaming, and everyday browsing.",
+          cards: [
+            { h: "Reliable on hotel Wi-Fi", p: "I connect once and forget about it. It just stays stable through long calls.", a: "— Product designer, Singapore" },
+            { h: "Simple for the whole family", p: "Setup on phones and laptops was quick, and support answered in minutes.", a: "— Parent, Taipei" },
+            { h: "Lower ad clutter", p: "Threat filtering removes noisy trackers so pages feel cleaner and faster.", a: "— Freelancer, Hong Kong" },
+            { h: "Smooth streaming sessions", p: "The app picks good routes automatically, which reduces buffering in the evening.", a: "— Student, Kuala Lumpur" },
+            { h: "Useful during travel", p: "Public network safety is much better when working from airports.", a: "— Consultant, Tokyo" },
+            { h: "Clear privacy controls", p: "I like seeing every major setting in one dashboard without extra complexity.", a: "— Engineer, Berlin" }
+          ],
+          meta: ["52k+ reviews", "230k+ ratings", "1M+ installs"]
+        },
+        devices: {
+          eyebrow: "Devices",
+          title: "Protect every device with apps and direct setup options",
+          desc: "Use native apps when available, or configure routers and advanced clients manually.",
+          cards: [
+            { h: "Mobile apps", p: "Fast connect and auto-protect on untrusted Wi-Fi networks." },
+            { h: "Desktop apps", p: "Full controls for protocol selection, split tunneling, and kill switch." },
+            { h: "TV apps", p: "Simple remote-friendly interface for big-screen streaming." },
+            { h: "Browser extension", p: "Lightweight browser protection with location quick-switch." },
+            { h: "Router setup", p: "Protect all home devices in one step through router profiles." },
+            { h: "Developer tools", p: "CLI and docs for scripted environments and custom deployments." }
+          ],
+          tag: {
+            fast: "Fast connect",
+            auto: "Auto-protect",
+            stream: "Stream-ready",
+            light: "Lightweight",
+            docs: "Docs",
+            cli: "CLI",
+            guide: "Guides"
+          },
+          download: {
+            h: "Direct downloads",
+            p: "Choose your platform package and install with default recommended settings.",
+            d1: "Download for Windows",
+            d2: "Download for macOS",
+            d3: "Download for Linux"
+          },
+          suggest: {
+            h: "Recommended by scenario",
+            p: "The app suggests profile presets based on your current network and device type.",
+            r1: "Travel mode activation",
+            r2: "Home mode activation",
+            r3: "Work mode activation"
+          }
+        },
+        learn: {
+          eyebrow: "What is a VPN?",
+          title: "Understand VPN basics before you choose a service",
+          desc: "A VPN encrypts your connection path and changes how your internet requests are routed.",
+          how: {
+            h: "How it works",
+            s1h: "Step 1: encrypted tunnel",
+            s1p: "Your traffic is encrypted between your device and the VPN endpoint.",
+            s2h: "Step 2: secure routing",
+            s2p: "Requests are forwarded through VPN infrastructure instead of your local network directly.",
+            s3h: "Step 3: destination access",
+            s3p: "Services receive requests from the VPN endpoint, reducing direct network exposure."
+          },
+          when: {
+            h: "When to turn it on",
+            b1: "Before joining public or unfamiliar Wi-Fi",
+            b2: "During remote work with confidential materials",
+            b3: "When you want reduced tracker exposure",
+            b4: "On hotel, airport, and shared event networks",
+            b5: "For consistent app behavior across network changes"
+          },
+          faq: [
+            { q: "What does a VPN protect me from?", a: "It helps protect data in transit on untrusted networks and reduces some network-level tracking. It does not replace antivirus, password hygiene, or account security practices." },
+            { q: "Will a VPN make my internet slower?", a: "Encryption and routing can add overhead. A good provider minimizes this with fast protocols and nearby server choices." },
+            { q: "Can I use one account on multiple devices?", a: "Yes. ISIW-VPN plans include multiple simultaneous devices so phones, laptops, and tablets stay covered." },
+            { q: "Is VPN usage legal?", a: "In many regions, personal VPN use is legal. Always check local regulations before use." },
+            { q: "Does ISIW-VPN store my browsing activity?", a: "ISIW-VPN follows a no-activity-logging design for browsing content and focuses on minimal operational diagnostics." },
+            { q: "Do I still need MFA if I use a VPN?", a: "Yes. Multi-factor authentication remains one of the most effective account protections and should always be enabled where possible." },
+            { q: "Can I cancel anytime?", a: "Yes. You can manage subscription settings in your account portal and request cancellation according to your plan terms." },
+            { q: "How does the 30-day guarantee work?", a: "If you are not satisfied, contact support within 30 days of purchase for a refund under the guarantee policy." }
+          ]
+        },
+        pricing: {
+          eyebrow: "Plans",
+          title: "Pick the plan that fits your protection level",
+          desc: "All plans include core VPN security, fast protocols, and a 30-day money-back guarantee.",
+          p1: {
+            tag: "Starter",
+            name: "Basic",
+            sub: "Everyday VPN essentials",
+            f1: "Encrypted VPN tunnel",
+            f2: "Global server access",
+            f3: "Up to 10 devices",
+            cta: "Get Basic"
+          },
+          p2: {
+            tag: "Most popular",
+            name: "Plus",
+            sub: "Adds threat protection suite",
+            f1: "Everything in Basic",
+            f2: "Threat filtering",
+            f3: "Identity monitoring",
+            cta: "Get Plus"
+          },
+          p3: {
+            tag: "Advanced",
+            name: "Complete",
+            sub: "Full security bundle",
+            f1: "Everything in Plus",
+            f2: "Secure cloud storage",
+            f3: "Priority support",
+            cta: "Get Complete"
+          }
+        },
+        cta: {
+          title: "Start your online security journey today",
+          desc: "Set up in minutes, protect all major devices, and try it risk-free with 30-day refund support.",
+          btn1: "Get ISIW-VPN",
+          btn2: "Learn more"
+        },
+        footer: {
+          blurb: "Privacy-first VPN protection for everyday browsing, work, and travel.",
+          support: "Support: support@isiw-vpn.example",
+          c1h: "Products",
+          c1: ["VPN Plans", "Threat Protection", "Device Apps", "Business VPN"],
+          c2h: "Company",
+          c2: ["About", "Blog", "Careers", "Press"],
+          c3h: "Support",
+          c3: ["FAQ", "Help Center", "Setup Tutorials", "Contact"],
+          copy: "© 2026 ISIW-VPN · All rights reserved."
+        }
       },
       "zh-Hans": {
-        nav: ["价格", "功能", "服务器", "常见问题", "支持"],
-        signIn: "登录",
-        getBrand: "获取 ISIW-VPN",
-        badge: "限时优惠 · 长周期方案更划算",
-        heroTitle: "为更安全、更开放的互联网而生的 VPN 服务",
-        heroSub: "ISIW-VPN 加密你的连接，帮助你在公共 Wi-Fi 下安全上网，并让多设备浏览保持流畅。",
-        heroCta: "立即获取优惠",
-        guarantee: "30 天退款保证",
-        trust: ["无活动记录政策", "AES-256 加密", "7×24 小时支持"],
-        promoTitle: "两年方案最高立省 72%",
-        featuresEyebrow: "功能",
-        featuresTitle: "一键开启在线安全",
-        featuresDesc: "强调简单易用：强隐私、智能防护与稳定速度，无需复杂设置。",
-        featureCards: [
-          { h: "安全加密", p: "使用现代加密技术保护你的流量，抵御真实世界的威胁。" },
-          { h: "威胁过滤", p: "拦截常见跟踪与风险链接，减少暴露与干扰。" },
-          { h: "稳定高速", p: "通过智能选路与优化，保持流媒体与工作场景的顺畅体验。" }
-        ],
-        networkEyebrow: "网络",
-        networkTitle: "海量高速服务器网络",
-        networkDesc: "覆盖全球的稳定线路与可靠可用性，随时选择更快的连接。",
-        statLabels: ["服务器", "地点", "不限流量"],
-        pricingEyebrow: "价格",
-        pricingTitle: "选择适合你的方案",
-        pricingIntro: "先从简单方案开始，随时升级或更换。",
-        seeFaq: "查看 FAQ",
-        plans: [
-          {
-            name: "Basic",
-            desc: "日常隐私所需的基础 VPN 功能。",
-            cta: "选择 Basic",
-            feats: ["加密 VPN 隧道", "快速节点选择", "最多 10 台设备"]
+        metaTitle: "ISIW-VPN — 更安全的开放互联网",
+        metaDesc: "ISIW-VPN 是隐私优先的 VPN 服务，提供强加密、威胁过滤与多设备流畅防护。",
+        nav: {
+          pricing: "价格",
+          features: "功能",
+          servers: "设备",
+          faq: "常见问题",
+          support: "支持",
+          signin: "登录",
+          get: "获取 ISIW-VPN"
+        },
+        hero: {
+          badge: "限时优惠 · 长周期方案更省",
+          title: "为更安全、更开放的互联网而生的 VPN 服务",
+          sub: "ISIW-VPN 可加密连接、拦截风险内容，并在手机、电脑、路由器和电视上保持流畅体验。",
+          cta: "立即获取优惠",
+          guarantee: "30 天退款保证",
+          protected: "连接已保护",
+          pill1: "无活动记录政策",
+          pill2: "AES-256 加密",
+          pill3: "7×24 小时支持"
+        },
+        offer: {
+          eyebrow: "限时活动",
+          title: "2 年方案最高立省 72% + 额外赠送 3 个月",
+          sub: "一个账号最多保护 10 台设备，并提供完整安全工具集。",
+          cta: "获取 ISIW-VPN",
+          card1k: "平均安装时间",
+          card1h: "< 3 分钟",
+          card1p: "安装、登录、连接，只需几步。",
+          card2k: "退款保障",
+          card2h: "30 天",
+          card2p: "完整试用全部功能，长期决策更安心。"
+        },
+        features: {
+          eyebrow: "不止是 VPN",
+          title: "在线安全也可以快速、简单且完整",
+          desc: "ISIW-VPN 将流量加密、实时威胁过滤和账号安全能力整合在一个轻量应用中。",
+          cards: [
+            { h: "安全加密", p: "在公共 Wi‑Fi、办公网络与共享热点中保护连接。" },
+            { h: "DNS 防泄漏", p: "通过加固 DNS 路径减少请求暴露。" },
+            { h: "网络中断保护", p: "VPN 隧道意外断开时自动阻断流量。" },
+            { h: "智能选服", p: "按场景自动选择低延迟节点。" },
+            { h: "常开保护", p: "网络切换时自动重连，持续受保护。" },
+            { h: "安全协议", p: "采用现代协议，兼顾速度与韧性。" }
+          ],
+          splitLeft: { h: "贴近日常使用习惯", p: "防护应当在后台稳定运行，覆盖浏览、流媒体、办公和出行。" },
+          timeline: [
+            { h: "早晨通勤", p: "笔记本接入咖啡店或酒店 Wi‑Fi 时自动连接。" },
+            { h: "工作时段", p: "访问内部系统与文档时保持传输加密。" },
+            { h: "晚间娱乐", p: "智能路由降低拥堵，减少卡顿。" }
+          ],
+          splitRight: { h: "稳定质量信号", p: "示例指标来自主要区域的内部健康监测。" },
+          bars: [
+            { n: "连接成功率" },
+            { n: "会话稳定性" },
+            { n: "威胁拦截率" },
+            { n: "应用启动可靠性" }
+          ]
+        },
+        why: {
+          eyebrow: "为什么要使用 VPN",
+          title: "在日常场景中降低网络暴露风险",
+          desc: "VPN 不能替代所有安全措施，但能在常见场景下显著降低风险。",
+          left: {
+            h: "最值得开启 VPN 的场景",
+            p: "建议将 ISIW-VPN 与强密码、多因素认证等策略配合使用。",
+            b1: "机场、咖啡店、共享办公等公共 Wi‑Fi",
+            b2: "处理敏感文件或后台系统的远程办公会话",
+            b3: "降低本地网络层面的被动画像风险",
+            b4: "网络切换时让应用继续安全在线"
           },
-          {
-            name: "Plus",
-            desc: "为日常浏览提供更强防护。",
-            cta: "选择 Plus",
-            feats: ["包含 Basic 全部功能", "威胁过滤", "密码管理器"]
+          right1: {
+            h: "场景覆盖",
+            p: "一个账号可覆盖个人、家庭、出行与混合办公设备。",
+            t1: "出行",
+            t2: "远程办公",
+            t3: "网上银行",
+            t4: "日常浏览"
           },
-          {
-            name: "Complete",
-            desc: "更全面的安全方案，安心无忧。",
-            cta: "选择 Complete",
-            feats: ["包含 Plus 全部功能", "1 TB 加密存储", "优先支持"]
+          right2: { h: "防护清单完成度" },
+          comp: ["流量加密", "可疑域名过滤", "身份风险提醒"],
+          note: "百分比为示例服务指标，不构成法律承诺。"
+        },
+        threat: {
+          eyebrow: "威胁防护",
+          title: "在风险内容触达前先一步拦截",
+          desc: "Threat Protection 可拦截常见恶意域名、欺诈广告与可疑下载。",
+          tabs: { browse: "浏览防护", files: "下载防护", identity: "身份防护" },
+          browse: [
+            { h: "恶意域名拦截", p: "在页面加载前阻断已知高风险域名。" },
+            { h: "追踪请求减少", p: "减少第三方追踪请求，让页面更干净。" },
+            { h: "侵扰广告过滤", p: "降低误点风险并减少页面噪音。" }
+          ],
+          files: {
+            left: {
+              h: "下载前检查",
+              p: "下载文件会基于已知风险特征和行为信号进行检测。",
+              b1: "黑名单哈希匹配",
+              b2: "可疑扩展名提示",
+              b3: "高风险文件打开前提醒"
+            },
+            right: {
+              h: "检测流程覆盖",
+              r1: "已知恶意样本",
+              r2: "未知但可疑文件",
+              r3: "钓鱼附件信号",
+              note: "覆盖数据基于内部测试集与公开样本。"
+            }
+          },
+          identity: [
+            { h: "数据泄露提醒", p: "当监控邮箱出现在已知泄露库时及时通知。" },
+            { h: "凭证健康提示", p: "提醒弱密码、复用密码和过期密码风险。" },
+            { h: "不安全表单警告", p: "在可疑页面提交凭证前给出提醒。" },
+            { h: "安全中心总览", p: "在一个面板中查看所有风险并快速处理。" }
+          ]
+        },
+        numbers: {
+          eyebrow: "规模数据",
+          title: "服务规模与稳定性一目了然",
+          desc: "全球容量与持续监控，为低延迟和稳定吞吐而设计。",
+          k1: "全球服务器",
+          k1s: "覆盖核心与边缘区域",
+          k2: "可用地点",
+          k2s: "更多线路选择与冗余",
+          k3: "每账号设备数",
+          k3s: "一次覆盖主要个人设备",
+          k4: "客服可用时长",
+          k4s: "全年无休",
+          left: {
+            h: "平台表现（示例）",
+            b1: "会话在线时长",
+            b2: "重连成功率",
+            b3: "协议协商成功率",
+            b4: "控制平面可用率"
+          },
+          right: {
+            h: "运维响应能力",
+            p: "安全与基础设施团队持续评估路由质量、节点健康与滥用行为。",
+            c1: "响应团队",
+            c2: "监控信号",
+            c3: "每周发布检查",
+            c4: "关键告警 < 15 分钟"
           }
-        ],
-        popularTag: "最受欢迎",
-        trustedEyebrow: "口碑",
-        trustedTitle: "深受个人与团队信赖",
-        trustedDesc: "来自第三方的评分与评价（示例）帮助你更放心地选择。",
-        ratingLines: [
-          "平均评分 · 5 万+ 评论",
-          "平均评分 · 20 万+ 评分",
-          "平均评分 · 100 万+ 下载"
-        ],
-        faqEyebrow: "常见问题",
-        faqTitle: "常见问题解答",
-        faqDesc: "快速了解常见 VPN 问题。",
-        faqQ: [
-          "VPN 是什么？",
-          "ISIW-VPN 安全吗？",
-          "可以同时连接多少设备？",
-          "可以退款吗？"
-        ],
-        faqA: [
-          "VPN 会在你的设备与互联网之间建立加密通道，帮助你在公共网络中保护数据并减少跟踪。",
-          "ISIW-VPN 采用强加密并坚持隐私优先。建议保持应用更新，并在可用时启用多因素认证。",
-          "套餐支持多设备使用，你可以在手机、电脑、平板等设备上同时开启保护。",
-          "可以。我们提供 30 天退款保证，让你可以无风险试用 ISIW-VPN。"
-        ],
-        ctaTitle: "开启你的在线安全之旅",
-        ctaDesc: "几分钟即可开启保护，并提供 30 天退款保证。",
-        learnMore: "了解更多",
-        footerBlurb: "隐私优先的 VPN 防护，适用于日常浏览、办公与出行。",
-        footerSupport: "支持邮箱：support@isiw-vpn.example",
-        footerCols: ["产品", "公司", "支持"],
-        footerLinks: [
-          ["VPN 套餐", "威胁过滤", "服务器网络", "企业 VPN"],
-          ["关于我们", "博客", "加入我们", "媒体"]
-          ,
-          ["常见问题", "帮助中心", "安装教程", "联系我们"]
-        ],
-        copyright: "© 2026 ISIW-VPN · 保留所有权利。"
+        },
+        privacy: {
+          eyebrow: "隐私控制",
+          title: "控制可见数据与连接行为",
+          desc: "通过清晰默认值与透明设置，按需精细化管理隐私策略。",
+          left: {
+            h: "控制中心",
+            p: "可按场景切换策略：出行模式、工作模式、严格模式。",
+            c1h: "自定义 DNS",
+            c1p: "通过可信安全解析器转发 DNS 请求。",
+            c2h: "分流功能",
+            c2p: "指定应用绕过 VPN。",
+            c3h: "协议锁定",
+            c3p: "为敏感业务固定协议行为。",
+            c4h: "局域网规则",
+            c4p: "隧道开启时仍可访问可信本地服务。"
+          },
+          right: {
+            h: "策略透明",
+            t1h: "最小化诊断",
+            t1p: "仅采集维持稳定与防滥用所需的最小诊断数据。",
+            t2h: "无活动日志",
+            t2p: "不保存浏览活动内容。",
+            t3h: "独立验证",
+            t3p: "可通过外部评估审查基础设施与控制措施。",
+            t4h: "细粒度权限",
+            t4p: "桌面与移动端仅在必要时请求权限。"
+          }
+        },
+        reviews: {
+          eyebrow: "用户评价",
+          title: "受到重视实用隐私用户的信任",
+          desc: "以下为旅行、远程办公、游戏和日常浏览场景的示例反馈。",
+          cards: [
+            { h: "酒店 Wi‑Fi 也稳定", p: "连接后几乎不用再管，长时间会议也不掉线。", a: "— 产品设计师，新加坡" },
+            { h: "全家上手都很快", p: "手机和电脑部署简单，客服响应很及时。", a: "— 家庭用户，台北" },
+            { h: "广告和追踪明显减少", p: "页面更干净，加载也更快。", a: "— 自由职业者，香港" },
+            { h: "流媒体体验顺畅", p: "自动选路很省心，晚高峰也不容易卡。", a: "— 学生，吉隆坡" },
+            { h: "出差期间更安心", p: "在机场等公共网络办公时安全感更强。", a: "— 顾问，东京" },
+            { h: "隐私设置很直观", p: "关键选项集中在一个面板，不复杂。", a: "— 工程师，柏林" }
+          ],
+          meta: ["5.2 万+ 评价", "23 万+ 评分", "100 万+ 安装"]
+        },
+        devices: {
+          eyebrow: "设备支持",
+          title: "用应用或手动配置保护每一台设备",
+          desc: "优先使用原生应用；也支持路由器和高级客户端手动配置。",
+          cards: [
+            { h: "手机应用", p: "在不可信 Wi‑Fi 下快速连接并自动防护。" },
+            { h: "桌面应用", p: "完整支持协议选择、分流和网络中断保护。" },
+            { h: "电视应用", p: "适配遥控器的大屏交互，开箱即用。" },
+            { h: "浏览器扩展", p: "轻量保护与快速切换节点。" },
+            { h: "路由器配置", p: "一台路由器覆盖全家设备。" },
+            { h: "开发者工具", p: "提供 CLI 和文档，支持自动化与自定义部署。" }
+          ],
+          tag: {
+            fast: "快速连接",
+            auto: "自动防护",
+            stream: "流媒体优化",
+            light: "轻量",
+            docs: "文档",
+            cli: "命令行",
+            guide: "指南"
+          },
+          download: {
+            h: "客户端下载",
+            p: "按平台下载并使用推荐默认设置安装。",
+            d1: "下载 Windows 版",
+            d2: "下载 macOS 版",
+            d3: "下载 Linux 版"
+          },
+          suggest: {
+            h: "场景推荐",
+            p: "应用会根据设备类型和网络环境推荐策略配置。",
+            r1: "出行模式启用率",
+            r2: "家庭模式启用率",
+            r3: "工作模式启用率"
+          }
+        },
+        learn: {
+          eyebrow: "VPN 是什么？",
+          title: "在选择服务前先理解 VPN 基础",
+          desc: "VPN 通过加密连接路径并改变请求路由方式来提升连接安全性。",
+          how: {
+            h: "工作原理",
+            s1h: "步骤 1：建立加密隧道",
+            s1p: "你的设备与 VPN 节点之间建立加密传输通道。",
+            s2h: "步骤 2：安全转发",
+            s2p: "请求先经由 VPN 基础设施再到目标服务。",
+            s3h: "步骤 3：访问目标",
+            s3p: "目标服务看到的是 VPN 节点出口，降低本地网络直接暴露。"
+          },
+          when: {
+            h: "建议开启时机",
+            b1: "连接公共或陌生 Wi‑Fi 前",
+            b2: "处理远程办公敏感资料时",
+            b3: "希望减少追踪请求时",
+            b4: "在酒店、机场、展会等共享网络",
+            b5: "频繁切换网络，保持连接一致性"
+          },
+          faq: [
+            { q: "VPN 可以防护哪些风险？", a: "它能在不可信网络中保护传输数据，并减少部分网络层追踪。但不能替代杀毒软件、密码管理和账号安全实践。" },
+            { q: "VPN 会不会让网速变慢？", a: "加密和转发会带来一定开销。优质服务会通过快速协议和邻近节点尽量降低影响。" },
+            { q: "一个账号能同时用于多台设备吗？", a: "可以。ISIW-VPN 套餐支持多设备同时在线，手机、电脑、平板都可覆盖。" },
+            { q: "使用 VPN 合法吗？", a: "在很多地区，个人使用 VPN 是合法的。请在使用前确认当地法规。" },
+            { q: "ISIW-VPN 会保存浏览活动吗？", a: "ISIW-VPN 采用无活动日志设计，不存储浏览内容，只保留最小化运营诊断数据。" },
+            { q: "用了 VPN 还需要 MFA 吗？", a: "需要。多因素认证仍是最有效的账号防护措施之一，建议始终开启。" },
+            { q: "我可以随时取消吗？", a: "可以。你可在账号中心管理订阅，并按套餐条款申请取消。" },
+            { q: "30 天退款保证如何执行？", a: "购买后 30 天内如不满意，可联系支持按退款政策申请。" }
+          ]
+        },
+        pricing: {
+          eyebrow: "方案",
+          title: "选择与你防护需求匹配的套餐",
+          desc: "所有套餐均含核心 VPN 防护、高速协议与 30 天退款保证。",
+          p1: { tag: "入门", name: "Basic", sub: "日常 VPN 基础防护", f1: "加密 VPN 隧道", f2: "全球节点访问", f3: "最多 10 台设备", cta: "选择 Basic" },
+          p2: { tag: "最受欢迎", name: "Plus", sub: "增加威胁防护套件", f1: "含 Basic 全部功能", f2: "威胁过滤", f3: "身份风险监控", cta: "选择 Plus" },
+          p3: { tag: "进阶", name: "Complete", sub: "完整安全组合", f1: "含 Plus 全部功能", f2: "安全云存储", f3: "优先支持", cta: "选择 Complete" }
+        },
+        cta: {
+          title: "今天就开启你的在线安全保护",
+          desc: "几分钟完成设置，覆盖主要设备，并享受 30 天无风险试用。",
+          btn1: "获取 ISIW-VPN",
+          btn2: "了解更多"
+        },
+        footer: {
+          blurb: "隐私优先的 VPN 防护，适用于日常浏览、办公与出行。",
+          support: "支持邮箱：support@isiw-vpn.example",
+          c1h: "产品",
+          c1: ["VPN 套餐", "威胁防护", "设备应用", "企业 VPN"],
+          c2h: "公司",
+          c2: ["关于我们", "博客", "加入我们", "媒体"],
+          c3h: "支持",
+          c3: ["常见问题", "帮助中心", "安装教程", "联系我们"],
+          copy: "© 2026 ISIW-VPN · 保留所有权利。"
+        }
       },
       "zh-Hant": {
-        nav: ["價格", "功能", "伺服器", "常見問題", "支援"],
-        signIn: "登入",
-        getBrand: "取得 ISIW-VPN",
-        badge: "限時優惠 · 長週期方案更划算",
-        heroTitle: "為更安全、更開放的網際網路而生的 VPN 服務",
-        heroSub: "ISIW-VPN 加密你的連線，協助你在公共 Wi-Fi 下安全上網，並讓多裝置瀏覽保持順暢。",
-        heroCta: "立即取得優惠",
-        guarantee: "30 天退款保證",
-        trust: ["無活動紀錄政策", "AES-256 加密", "24/7 支援"],
-        promoTitle: "兩年方案最高立省 72%",
-        featuresEyebrow: "功能",
-        featuresTitle: "一鍵開啟線上安全",
-        featuresDesc: "強調簡單易用：強隱私、智慧防護與穩定速度，無需複雜設定。",
-        featureCards: [
-          { h: "安全加密", p: "使用現代加密技術保護你的流量，抵禦真實世界的威脅。" },
-          { h: "威脅過濾", p: "阻擋常見追蹤與風險連結，降低暴露與干擾。" },
-          { h: "穩定高速", p: "透過智慧選路與最佳化，保持串流與工作情境的順暢體驗。" }
-        ],
-        networkEyebrow: "網路",
-        networkTitle: "海量高速伺服器網路",
-        networkDesc: "覆蓋全球的穩定線路與可靠可用性，隨時選擇更快的連線。",
-        statLabels: ["伺服器", "地點", "不限流量"],
-        pricingEyebrow: "價格",
-        pricingTitle: "選擇適合你的方案",
-        pricingIntro: "先從簡單方案開始，隨時升級或更換。",
-        seeFaq: "查看 FAQ",
-        plans: [
-          {
-            name: "Basic",
-            desc: "日常隱私所需的基礎 VPN 功能。",
-            cta: "選擇 Basic",
-            feats: ["加密 VPN 隧道", "快速節點選擇", "最多 10 台裝置"]
+        metaTitle: "ISIW-VPN — 更安全的開放網際網路",
+        metaDesc: "ISIW-VPN 是隱私優先的 VPN 服務，提供強加密、威脅過濾與多裝置流暢防護。",
+        nav: {
+          pricing: "價格",
+          features: "功能",
+          servers: "裝置",
+          faq: "常見問題",
+          support: "支援",
+          signin: "登入",
+          get: "取得 ISIW-VPN"
+        },
+        hero: {
+          badge: "限時優惠 · 長週期方案更省",
+          title: "為更安全、更開放的網際網路而生的 VPN 服務",
+          sub: "ISIW-VPN 可加密連線、攔截風險內容，並在手機、電腦、路由器與電視上保持流暢體驗。",
+          cta: "立即取得優惠",
+          guarantee: "30 天退款保證",
+          protected: "連線已保護",
+          pill1: "無活動紀錄政策",
+          pill2: "AES-256 加密",
+          pill3: "24/7 支援"
+        },
+        offer: {
+          eyebrow: "限時活動",
+          title: "2 年方案最高立省 72% + 額外贈送 3 個月",
+          sub: "一個帳號最多保護 10 台裝置，並提供完整安全工具集。",
+          cta: "取得 ISIW-VPN",
+          card1k: "平均安裝時間",
+          card1h: "< 3 分鐘",
+          card1p: "安裝、登入、連線，只需幾步。",
+          card2k: "退款保障",
+          card2h: "30 天",
+          card2p: "完整試用全部功能，長期決策更安心。"
+        },
+        features: {
+          eyebrow: "不只是 VPN",
+          title: "線上安全也可以快速、簡單且完整",
+          desc: "ISIW-VPN 將流量加密、即時威脅過濾與帳號安全能力整合在一個輕量應用中。",
+          cards: [
+            { h: "安全加密", p: "在公共 Wi‑Fi、辦公網路與共享熱點中保護連線。" },
+            { h: "DNS 防洩漏", p: "透過加固 DNS 路徑減少請求暴露。" },
+            { h: "網路中斷保護", p: "VPN 隧道意外斷開時自動阻斷流量。" },
+            { h: "智慧選服", p: "按場景自動選擇低延遲節點。" },
+            { h: "常開保護", p: "網路切換時自動重連，持續受保護。" },
+            { h: "安全協議", p: "採用現代協議，兼顧速度與韌性。" }
+          ],
+          splitLeft: { h: "貼近日常使用習慣", p: "防護應在背景穩定運作，覆蓋瀏覽、串流、辦公與出行。" },
+          timeline: [
+            { h: "早晨通勤", p: "筆電連上咖啡店或飯店 Wi‑Fi 時自動連線。" },
+            { h: "工作時段", p: "存取內部系統與文件時保持傳輸加密。" },
+            { h: "晚間娛樂", p: "智慧路由降低壅塞，減少卡頓。" }
+          ],
+          splitRight: { h: "穩定品質訊號", p: "示例指標來自主要區域的內部健康監測。" },
+          bars: [
+            { n: "連線成功率" },
+            { n: "會話穩定性" },
+            { n: "威脅攔截率" },
+            { n: "應用啟動可靠性" }
+          ]
+        },
+        why: {
+          eyebrow: "為什麼要使用 VPN",
+          title: "在日常場景中降低網路暴露風險",
+          desc: "VPN 不能取代所有安全措施，但能在常見場景下顯著降低風險。",
+          left: {
+            h: "最值得開啟 VPN 的場景",
+            p: "建議將 ISIW-VPN 與強密碼、多因素驗證等策略搭配使用。",
+            b1: "機場、咖啡店、共享辦公等公共 Wi‑Fi",
+            b2: "處理敏感檔案或後台系統的遠端工作會話",
+            b3: "降低本地網路層面的被動輪廓描繪風險",
+            b4: "網路切換時讓應用持續安全在線"
           },
-          {
-            name: "Plus",
-            desc: "為日常瀏覽提供更強防護。",
-            cta: "選擇 Plus",
-            feats: ["包含 Basic 全部功能", "威脅過濾", "密碼管理器"]
+          right1: {
+            h: "場景覆蓋",
+            p: "一個帳號可覆蓋個人、家庭、出行與混合辦公裝置。",
+            t1: "出行",
+            t2: "遠端工作",
+            t3: "網路銀行",
+            t4: "日常瀏覽"
           },
-          {
-            name: "Complete",
-            desc: "更全面的安全方案，安心無憂。",
-            cta: "選擇 Complete",
-            feats: ["包含 Plus 全部功能", "1 TB 加密儲存", "優先支援"]
+          right2: { h: "防護清單完成度" },
+          comp: ["流量加密", "可疑網域過濾", "身份風險提醒"],
+          note: "百分比為示例服務指標，不構成法律承諾。"
+        },
+        threat: {
+          eyebrow: "威脅防護",
+          title: "在風險內容到達前先一步攔截",
+          desc: "Threat Protection 可攔截常見惡意網域、欺詐廣告與可疑下載。",
+          tabs: { browse: "瀏覽防護", files: "下載防護", identity: "身份防護" },
+          browse: [
+            { h: "惡意網域攔截", p: "在頁面載入前阻擋已知高風險網域。" },
+            { h: "追蹤請求減少", p: "減少第三方追蹤請求，讓頁面更乾淨。" },
+            { h: "侵擾廣告過濾", p: "降低誤點風險並減少頁面噪音。" }
+          ],
+          files: {
+            left: {
+              h: "下載前檢查",
+              p: "下載檔案會依據已知風險特徵與行為訊號進行檢測。",
+              b1: "黑名單雜湊比對",
+              b2: "可疑副檔名提示",
+              b3: "高風險檔案開啟前提醒"
+            },
+            right: {
+              h: "檢測流程覆蓋",
+              r1: "已知惡意樣本",
+              r2: "未知但可疑檔案",
+              r3: "釣魚附件訊號",
+              note: "覆蓋資料基於內部測試集與公開樣本。"
+            }
+          },
+          identity: [
+            { h: "資料外洩提醒", p: "當監控信箱出現在已知外洩資料庫時即時通知。" },
+            { h: "憑證健康提示", p: "提醒弱密碼、重複使用與過期密碼風險。" },
+            { h: "不安全表單警告", p: "在可疑頁面提交憑證前給出提醒。" },
+            { h: "安全中心總覽", p: "在一個面板中查看所有風險並快速處理。" }
+          ]
+        },
+        numbers: {
+          eyebrow: "規模數據",
+          title: "服務規模與穩定性一目了然",
+          desc: "全球容量與持續監測，為低延遲與穩定吞吐而設計。",
+          k1: "全球伺服器",
+          k1s: "覆蓋核心與邊緣區域",
+          k2: "可用地點",
+          k2s: "更多線路選擇與冗餘",
+          k3: "每帳號裝置數",
+          k3s: "一次覆蓋主要個人裝置",
+          k4: "客服可用時長",
+          k4s: "全年無休",
+          left: {
+            h: "平台表現（示例）",
+            b1: "會話在線時長",
+            b2: "重連成功率",
+            b3: "協議協商成功率",
+            b4: "控制平面可用率"
+          },
+          right: {
+            h: "維運回應能力",
+            p: "安全與基礎設施團隊持續評估路由品質、節點健康與濫用行為。",
+            c1: "回應團隊",
+            c2: "監控訊號",
+            c3: "每週發佈檢查",
+            c4: "關鍵告警 < 15 分鐘"
           }
-        ],
-        popularTag: "最受歡迎",
-        trustedEyebrow: "口碑",
-        trustedTitle: "深受個人與團隊信賴",
-        trustedDesc: "來自第三方的評分與評價（示例）協助你更放心地選擇。",
-        ratingLines: [
-          "平均評分 · 5 萬+ 評論",
-          "平均評分 · 20 萬+ 評分",
-          "平均評分 · 100 萬+ 下載"
-        ],
-        faqEyebrow: "常見問題",
-        faqTitle: "常見問題解答",
-        faqDesc: "快速了解常見 VPN 問題。",
-        faqQ: [
-          "VPN 是什麼？",
-          "ISIW-VPN 安全嗎？",
-          "可以同時連線多少裝置？",
-          "可以退款嗎？"
-        ],
-        faqA: [
-          "VPN 會在你的裝置與網際網路之間建立加密通道，協助你在公共網路中保護資料並減少追蹤。",
-          "ISIW-VPN 採用強加密並堅持隱私優先。建議保持應用更新，並在可用時啟用多因素驗證。",
-          "方案支援多裝置使用，你可以在手機、電腦、平板等裝置上同時開啟保護。",
-          "可以。我們提供 30 天退款保證，讓你可以無風險試用 ISIW-VPN。"
-        ],
-        ctaTitle: "開始你的線上安全之旅",
-        ctaDesc: "幾分鐘即可開啟保護，並提供 30 天退款保證。",
-        learnMore: "了解更多",
-        footerBlurb: "隱私優先的 VPN 防護，適用於日常瀏覽、辦公與出行。",
-        footerSupport: "支援信箱：support@isiw-vpn.example",
-        footerCols: ["產品", "公司", "支援"],
-        footerLinks: [
-          ["VPN 方案", "威脅過濾", "伺服器網路", "企業 VPN"],
-          ["關於我們", "部落格", "加入我們", "媒體"],
-          ["常見問題", "幫助中心", "安裝教學", "聯絡我們"]
-        ],
-        copyright: "© 2026 ISIW-VPN · 保留所有權利。"
+        },
+        privacy: {
+          eyebrow: "隱私控制",
+          title: "控制可見資料與連線行為",
+          desc: "透過清晰預設與透明設定，按需精細化管理隱私策略。",
+          left: {
+            h: "控制中心",
+            p: "可依場景切換策略：出行模式、工作模式、嚴格模式。",
+            c1h: "自訂 DNS",
+            c1p: "透過可信安全解析器轉送 DNS 請求。",
+            c2h: "分流功能",
+            c2p: "指定應用繞過 VPN。",
+            c3h: "協議鎖定",
+            c3p: "為敏感業務固定協議行為。",
+            c4h: "區域網規則",
+            c4p: "隧道開啟時仍可存取可信本地服務。"
+          },
+          right: {
+            h: "策略透明",
+            t1h: "最小化診斷",
+            t1p: "僅蒐集維持穩定與防濫用所需的最小診斷資料。",
+            t2h: "無活動日誌",
+            t2p: "不保存瀏覽活動內容。",
+            t3h: "獨立驗證",
+            t3p: "可透過外部評估審查基礎設施與控制措施。",
+            t4h: "細粒度權限",
+            t4p: "桌面與行動端僅在必要時請求權限。"
+          }
+        },
+        reviews: {
+          eyebrow: "使用者評價",
+          title: "受到重視實用隱私使用者的信任",
+          desc: "以下為旅行、遠端工作、遊戲與日常瀏覽場景的示例回饋。",
+          cards: [
+            { h: "飯店 Wi‑Fi 也穩定", p: "連上後幾乎不用再管，長時間會議也不掉線。", a: "— 產品設計師，新加坡" },
+            { h: "全家上手都很快", p: "手機和電腦部署簡單，客服回應很即時。", a: "— 家庭使用者，台北" },
+            { h: "廣告與追蹤明顯減少", p: "頁面更乾淨，載入也更快。", a: "— 自由工作者，香港" },
+            { h: "串流體驗順暢", p: "自動選路很省心，晚高峰也不易卡頓。", a: "— 學生，吉隆坡" },
+            { h: "出差期間更安心", p: "在機場等公共網路辦公時安全感更強。", a: "— 顧問，東京" },
+            { h: "隱私設定很直觀", p: "關鍵選項集中在一個面板，不複雜。", a: "— 工程師，柏林" }
+          ],
+          meta: ["5.2 萬+ 評價", "23 萬+ 評分", "100 萬+ 安裝"]
+        },
+        devices: {
+          eyebrow: "裝置支援",
+          title: "用應用或手動配置保護每一台裝置",
+          desc: "優先使用原生應用；也支援路由器與進階客戶端手動配置。",
+          cards: [
+            { h: "手機應用", p: "在不可信 Wi‑Fi 下快速連線並自動防護。" },
+            { h: "桌面應用", p: "完整支援協議選擇、分流與網路中斷保護。" },
+            { h: "電視應用", p: "適配遙控器的大螢幕互動，開箱即用。" },
+            { h: "瀏覽器擴充", p: "輕量防護與快速切換節點。" },
+            { h: "路由器配置", p: "一台路由器覆蓋全家裝置。" },
+            { h: "開發者工具", p: "提供 CLI 與文件，支援自動化與自訂部署。" }
+          ],
+          tag: {
+            fast: "快速連線",
+            auto: "自動防護",
+            stream: "串流優化",
+            light: "輕量",
+            docs: "文件",
+            cli: "命令列",
+            guide: "指南"
+          },
+          download: {
+            h: "客戶端下載",
+            p: "依平台下載並使用建議預設設定安裝。",
+            d1: "下載 Windows 版",
+            d2: "下載 macOS 版",
+            d3: "下載 Linux 版"
+          },
+          suggest: {
+            h: "情境推薦",
+            p: "應用會根據裝置類型與網路環境推薦策略設定。",
+            r1: "出行模式啟用率",
+            r2: "家庭模式啟用率",
+            r3: "工作模式啟用率"
+          }
+        },
+        learn: {
+          eyebrow: "VPN 是什麼？",
+          title: "在選擇服務前先理解 VPN 基礎",
+          desc: "VPN 透過加密連線路徑並改變請求路由方式來提升連線安全性。",
+          how: {
+            h: "運作原理",
+            s1h: "步驟 1：建立加密隧道",
+            s1p: "你的裝置與 VPN 節點之間建立加密傳輸通道。",
+            s2h: "步驟 2：安全轉送",
+            s2p: "請求先經由 VPN 基礎設施再到目標服務。",
+            s3h: "步驟 3：存取目標",
+            s3p: "目標服務看到的是 VPN 節點出口，降低本地網路直接暴露。"
+          },
+          when: {
+            h: "建議開啟時機",
+            b1: "連接公共或陌生 Wi‑Fi 前",
+            b2: "處理遠端工作敏感資料時",
+            b3: "希望減少追蹤請求時",
+            b4: "在飯店、機場、展會等共享網路",
+            b5: "頻繁切換網路，保持連線一致性"
+          },
+          faq: [
+            { q: "VPN 可以防護哪些風險？", a: "它能在不可信網路中保護傳輸資料，並減少部分網路層追蹤。但不能取代防毒軟體、密碼管理與帳號安全實踐。" },
+            { q: "VPN 會不會讓網速變慢？", a: "加密與轉送會帶來一定開銷。優質服務會透過快速協議與鄰近節點盡量降低影響。" },
+            { q: "一個帳號能同時用於多台裝置嗎？", a: "可以。ISIW-VPN 方案支援多裝置同時在線，手機、電腦、平板都可覆蓋。" },
+            { q: "使用 VPN 合法嗎？", a: "在許多地區，個人使用 VPN 是合法的。請在使用前確認當地法規。" },
+            { q: "ISIW-VPN 會保存瀏覽活動嗎？", a: "ISIW-VPN 採用無活動日誌設計，不儲存瀏覽內容，只保留最小化營運診斷資料。" },
+            { q: "用了 VPN 還需要 MFA 嗎？", a: "需要。多因素驗證仍是最有效的帳號防護措施之一，建議始終開啟。" },
+            { q: "我可以隨時取消嗎？", a: "可以。你可在帳號中心管理訂閱，並依方案條款申請取消。" },
+            { q: "30 天退款保證如何執行？", a: "購買後 30 天內如不滿意，可聯絡支援依退款政策申請。" }
+          ]
+        },
+        pricing: {
+          eyebrow: "方案",
+          title: "選擇與防護需求匹配的方案",
+          desc: "所有方案均含核心 VPN 防護、高速協議與 30 天退款保證。",
+          p1: { tag: "入門", name: "Basic", sub: "日常 VPN 基礎防護", f1: "加密 VPN 隧道", f2: "全球節點存取", f3: "最多 10 台裝置", cta: "選擇 Basic" },
+          p2: { tag: "最受歡迎", name: "Plus", sub: "增加威脅防護套件", f1: "含 Basic 全部功能", f2: "威脅過濾", f3: "身份風險監控", cta: "選擇 Plus" },
+          p3: { tag: "進階", name: "Complete", sub: "完整安全組合", f1: "含 Plus 全部功能", f2: "安全雲端儲存", f3: "優先支援", cta: "選擇 Complete" }
+        },
+        cta: {
+          title: "今天就開啟你的線上安全保護",
+          desc: "幾分鐘完成設定，覆蓋主要裝置，並享受 30 天無風險試用。",
+          btn1: "取得 ISIW-VPN",
+          btn2: "了解更多"
+        },
+        footer: {
+          blurb: "隱私優先的 VPN 防護，適用於日常瀏覽、辦公與出行。",
+          support: "支援信箱：support@isiw-vpn.example",
+          c1h: "產品",
+          c1: ["VPN 方案", "威脅防護", "裝置應用", "企業 VPN"],
+          c2h: "公司",
+          c2: ["關於我們", "部落格", "加入我們", "媒體"],
+          c3h: "支援",
+          c3: ["常見問題", "幫助中心", "安裝教學", "聯絡我們"],
+          copy: "© 2026 ISIW-VPN · 保留所有權利。"
+        }
       }
     };
 
@@ -1454,223 +2213,37 @@
     const getLang = () => {
       const p = new URLSearchParams(location.search);
       const forced = p.get('lang');
-      if (forced) return forced;
+      if (forced && I18N[forced]) return forced;
       const stored = localStorage.getItem('lang');
-      if (stored) return stored;
+      if (stored && I18N[stored]) return stored;
       return detectLang();
     };
 
-    const setTextAfterIcon = (el, text) => {
-      if (!el) return;
-      // Replace any text nodes (keep the svg).
-      const nodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
-      if (nodes.length) {
-        nodes.forEach((n, i) => { n.textContent = (i === 0 ? ' ' : '') + text; });
-      } else {
-        el.append(document.createTextNode(' ' + text));
-      }
-    };
+    const getPath = (obj, path) => path.split('.').reduce((acc, k) => (acc == null ? undefined : acc[k]), obj);
 
     const applyLang = (langKey) => {
       const lang = I18N[langKey] ? langKey : 'en';
       const t = I18N[lang];
-      document.documentElement.lang = (lang === 'en') ? 'en' : lang;
-
-      document.title = (lang === 'en') ? 'ISIW-VPN — A safer, open internet' :
-        (lang === 'zh-Hans') ? 'ISIW-VPN — 更安全的开放互联网' :
-        'ISIW-VPN — 更安全的開放網際網路';
-
+      document.documentElement.lang = lang === 'en' ? 'en' : lang;
+      document.title = t.metaTitle;
       const meta = document.querySelector('meta[name="description"]');
-      if (meta) {
-        meta.setAttribute('content', (lang === 'en')
-          ? 'ISIW-VPN is a privacy-first VPN experience with secure encryption, fast connections, and simple protection across your devices.'
-          : (lang === 'zh-Hans')
-            ? 'ISIW-VPN 是隐私优先的 VPN 服务：强加密、快速连接，多设备轻松保护。'
-            : 'ISIW-VPN 是隱私優先的 VPN 服務：強加密、快速連線，多裝置輕鬆保護。'
-        );
-      }
+      if (meta) meta.setAttribute('content', t.metaDesc);
 
-      // Nav
-      const nav = document.querySelectorAll('.nav-links a');
-      nav.forEach((a, i) => { if (t.nav[i]) a.textContent = t.nav[i]; });
-      const signIn = document.querySelector('.nav-actions .btn-ghost');
-      if (signIn) signIn.textContent = t.signIn;
-      const getTop = document.querySelector('.nav-actions .btn-primary');
-      if (getTop) getTop.textContent = t.getBrand;
-
-      // Hero
-      const badge = document.querySelector('.hero .badge');
-      if (badge) {
-        // keep dot element
-        const dot = badge.querySelector('.badge-dot');
-        if (dot) {
-          // remove existing text nodes then add
-          Array.from(badge.childNodes).forEach(n => { if (n.nodeType === Node.TEXT_NODE) badge.removeChild(n); });
-          badge.append(document.createTextNode(' ' + t.badge));
-        } else {
-          badge.textContent = t.badge;
-        }
-      }
-      const h1 = document.querySelector('.hero h1');
-      if (h1) h1.textContent = t.heroTitle;
-      const hsub = document.querySelector('.hero .hero-sub');
-      if (hsub) hsub.textContent = t.heroSub;
-      const heroBtn = document.querySelector('.hero-actions .btn-primary');
-      if (heroBtn) heroBtn.textContent = t.heroCta;
-      setTextAfterIcon(document.querySelector('.hero-actions .guarantee'), t.guarantee);
-
-      const pills = document.querySelectorAll('.trust-row .pill');
-      pills.forEach((p, i) => { if (t.trust[i]) p.textContent = t.trust[i]; });
-
-      // Promo
-      const promoTitle = document.querySelector('.promo-title');
-      if (promoTitle) promoTitle.textContent = t.promoTitle;
-      const promoBtn = document.querySelector('.promo .btn-primary');
-      if (promoBtn) promoBtn.textContent = t.getBrand;
-
-      // Features section
-      const fEyebrow = document.querySelector('#features .eyebrow');
-      if (fEyebrow) fEyebrow.textContent = t.featuresEyebrow;
-      const fTitle = document.querySelector('#features h2');
-      if (fTitle) fTitle.textContent = t.featuresTitle;
-      const fDesc = document.querySelector('#features .stack-12 p');
-      if (fDesc) fDesc.textContent = t.featuresDesc;
-      const cards = document.querySelectorAll('#features .card');
-      cards.forEach((c, i) => {
-        const item = t.featureCards[i];
-        if (!item) return;
-        const hh = c.querySelector('h3');
-        const pp = c.querySelector('p');
-        if (hh) hh.textContent = item.h;
-        if (pp) pp.textContent = item.p;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const value = getPath(t, key);
+        if (value == null) return;
+        el.textContent = String(value);
       });
-
-      // Network
-      const nEyebrow = document.querySelector('#servers .eyebrow');
-      if (nEyebrow) nEyebrow.textContent = t.networkEyebrow;
-      const nTitle = document.querySelector('#servers h2');
-      if (nTitle) nTitle.textContent = t.networkTitle;
-      const nDesc = document.querySelector('#servers .stack-12 p');
-      if (nDesc) nDesc.textContent = t.networkDesc;
-      const statSpans = document.querySelectorAll('#servers .stat span');
-      if (statSpans[0]) statSpans[0].textContent = t.statLabels[0];
-      if (statSpans[1]) statSpans[1].textContent = t.statLabels[1];
-      if (statSpans[2]) statSpans[2].textContent = t.statLabels[2];
-
-      // Pricing
-      const pEyebrow = document.querySelector('#pricing .eyebrow');
-      if (pEyebrow) pEyebrow.textContent = t.pricingEyebrow;
-      const pTitle = document.querySelector('#pricing h2');
-      if (pTitle) pTitle.textContent = t.pricingTitle;
-      const pIntro = document.querySelector('#pricing .stack-12 p');
-      if (pIntro) {
-        pIntro.innerHTML = `${t.pricingIntro} <a class="link" href="#faq">${t.seeFaq}</a>`;
-      }
-      const popular = document.querySelector('#pricing .tag');
-      if (popular) popular.textContent = t.popularTag;
-
-      const plans = document.querySelectorAll('#pricing .plan');
-      plans.forEach((planEl, i) => {
-        const pl = t.plans[i];
-        if (!pl) return;
-        const name = planEl.querySelector('.plan-name');
-        const desc = planEl.querySelector('.plan-desc');
-        if (name) name.textContent = pl.name;
-        if (desc) desc.textContent = pl.desc;
-        const btn = planEl.querySelector('.btn-primary');
-        if (btn) btn.textContent = pl.cta;
-        // features lines
-        const feats = planEl.querySelectorAll('.features .feat');
-        feats.forEach((f, idx) => {
-          if (!pl.feats[idx]) return;
-          // replace text node after svg
-          Array.from(f.childNodes).forEach((n) => {
-            if (n.nodeType === Node.TEXT_NODE) n.textContent = pl.feats[idx];
-          });
-          if (!Array.from(f.childNodes).some(n => n.nodeType === Node.TEXT_NODE)) {
-            f.append(document.createTextNode(pl.feats[idx]));
-          }
-        });
-        // guarantee text inside plan
-        const g = planEl.querySelector('.guarantee');
-        if (g) setTextAfterIcon(g, t.guarantee);
-      });
-
-      // Trusted
-      const tEyebrow = document.querySelector('.section.alt .eyebrow');
-      if (tEyebrow) tEyebrow.textContent = t.trustedEyebrow;
-      const tTitle = document.querySelector('.section.alt h2');
-      if (tTitle) tTitle.textContent = t.trustedTitle;
-      const tDesc = document.querySelector('.section.alt .stack-12 p');
-      if (tDesc) tDesc.textContent = t.trustedDesc;
-
-      const ratingPs = document.querySelectorAll('.ratings .rating p');
-      ratingPs.forEach((rp, i) => {
-        const strong = rp.querySelector('strong');
-        const score = strong ? strong.textContent : '';
-        const suffix = t.ratingLines[i] || '';
-        rp.innerHTML = `<strong>${score}</strong> ${suffix}`;
-      });
-
-      // FAQ
-      const fqEyebrow = document.querySelector('#faq .eyebrow');
-      if (fqEyebrow) fqEyebrow.textContent = t.faqEyebrow;
-      const fqTitle = document.querySelector('#faq h2');
-      if (fqTitle) fqTitle.textContent = t.faqTitle;
-      const fqDesc = document.querySelector('#faq .stack-12 p');
-      if (fqDesc) fqDesc.textContent = t.faqDesc;
-
-      const qs = document.querySelectorAll('#faq .qa .q');
-      qs.forEach((q, i) => {
-        if (!t.faqQ[i]) return;
-        // The first child is usually a text node containing the question.
-        const firstText = Array.from(q.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
-        if (firstText) firstText.textContent = t.faqQ[i] + ' ';
-      });
-      const as = document.querySelectorAll('#faq .qa .a p');
-      as.forEach((p, i) => { if (t.faqA[i]) p.textContent = t.faqA[i]; });
-
-      // Bottom CTA
-      const ctaH = document.querySelector('.cta h3');
-      if (ctaH) ctaH.textContent = t.ctaTitle;
-      const ctaP = document.querySelector('.cta p');
-      if (ctaP) ctaP.textContent = t.ctaDesc;
-      const ctaBtn = document.querySelector('.cta .btn-primary');
-      if (ctaBtn) ctaBtn.textContent = t.getBrand;
-      const ctaLearn = document.querySelector('.cta .btn-ghost');
-      if (ctaLearn) ctaLearn.textContent = t.learnMore;
-
-      // Footer
-      const footerBrandPs = document.querySelectorAll('.footer-brand p');
-      if (footerBrandPs[0]) footerBrandPs[0].textContent = t.footerBlurb;
-      if (footerBrandPs[1]) footerBrandPs[1].textContent = t.footerSupport;
-
-      const footerH = document.querySelectorAll('.footer-col h4');
-      footerH.forEach((h, i) => { if (t.footerCols[i]) h.textContent = t.footerCols[i]; });
-
-      const footerCols = document.querySelectorAll('.footer-col');
-      footerCols.forEach((col, i) => {
-        const links = col.querySelectorAll('a');
-        const arr = t.footerLinks[i];
-        if (!arr) return;
-        links.forEach((a, idx) => { if (arr[idx]) a.textContent = arr[idx]; });
-      });
-
-      const bottom = document.querySelector('.footer-bottom .container');
-      if (bottom) bottom.textContent = t.copyright;
     };
 
     applyLang(getLang());
 
-    // Header scroll
     const headerWrap = document.getElementById('headerWrap');
-    const updateHeader = () => {
-      headerWrap.classList.toggle('scrolled', window.scrollY > 12);
-    };
+    const updateHeader = () => headerWrap.classList.toggle('scrolled', window.scrollY > 12);
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
 
-    // Reveal on scroll
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.isIntersecting) {
@@ -1684,7 +2257,14 @@
       if (!el.classList.contains('in')) io.observe(el);
     });
 
-    // FAQ accordion
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.dataset.tabPanel === tab));
+      });
+    });
+
     const setFAQHeight = (qa, open) => {
       const ans = qa.querySelector('.a');
       if (!ans) return;
@@ -1692,10 +2272,8 @@
         ans.style.maxHeight = '0px';
         return;
       }
-      // Use inner content height for more stable animation.
       const inner = ans.firstElementChild;
       const target = (inner ? inner.scrollHeight : ans.scrollHeight);
-      // small buffer avoids clipping due to subpixel rendering
       ans.style.maxHeight = (target + 6) + 'px';
     };
 
@@ -1703,26 +2281,20 @@
       const btn = qa.querySelector('.q');
       btn.addEventListener('click', () => {
         const willOpen = !qa.classList.contains('open');
-
-        // close others first (Nord feel)
-        document.querySelectorAll('.qa.open').forEach((other) => {
+        document.querySelectorAll('.qa.open').forEach(other => {
           if (other !== qa) {
             other.classList.remove('open');
             setFAQHeight(other, false);
           }
         });
-
         qa.classList.toggle('open', willOpen);
         setFAQHeight(qa, willOpen);
       });
-
-      // keep heights correct on resize
       window.addEventListener('resize', () => {
         if (qa.classList.contains('open')) setFAQHeight(qa, true);
       }, { passive: true });
     });
 
-    // Count-up stats
     const countUp = (el, to) => {
       const start = 0;
       const duration = 900;
@@ -1742,16 +2314,15 @@
         const targets = e.target.querySelectorAll('[data-count]');
         targets.forEach((el) => {
           const to = parseInt(el.getAttribute('data-count'), 10);
-          if (!Number.isFinite(to)) return;
-          if (el.dataset.done) return;
+          if (!Number.isFinite(to) || el.dataset.done) return;
           el.dataset.done = '1';
           countUp(el, to);
         });
         statObserver.unobserve(e.target);
       }
-    }, { threshold: 0.25 });
+    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.map').forEach(m => statObserver.observe(m));
+    document.querySelectorAll('#stats, #numbers, .kpi-strip, .split').forEach(el => statObserver.observe(el));
   </script>
 </body>
 </html>
